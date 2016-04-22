@@ -5,6 +5,8 @@ class CordinatorsController < ApplicationController
   # GET /cordinators.json
   def index
     @cordinators = Cordinator.all
+    @cordinator = Cordinator.order('name ASC').page(params[:page]).per(5)
+    
   end
 
   # GET /cordinators/1

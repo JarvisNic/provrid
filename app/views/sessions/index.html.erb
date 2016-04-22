@@ -38,11 +38,11 @@
 <% end%>
 </tbody>
 </table>
-<% end%>
 
 
-  
-
+<%= line_chart Project.group_by_day(:created_at).count %>
+<% end %>
+<%= pie_chart Project.group(:name).count %>
  <%  else %>
  
 <% @cordinator.each do |c|%>
@@ -86,4 +86,5 @@
 <div class="col-md-6">
 <%= render 'new' %>
 </div>
+
 <% end %>

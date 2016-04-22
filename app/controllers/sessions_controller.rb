@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   def index
     @cordinator = Cordinator.all
     @proyects = Project.all
+
   end
 
 

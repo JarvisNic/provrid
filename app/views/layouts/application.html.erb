@@ -3,6 +3,8 @@
 <head>
   <title>Provrid</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "//www.google.com/jsapi" %>
+  <%= javascript_include_tag "application", "chartkick" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -73,6 +75,7 @@
 
 <div class="col-md-12">
 <%= yield %>
+<%= yield :charts_js %>
 </div>
 </div>
 </body>
