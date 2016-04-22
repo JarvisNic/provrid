@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Provrid</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= javascript_include_tag "jquery-1.4.2.min", "rails", "highcharts" %>
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">VRID-UNI</a>
+    </div>
+
+    <% if current_user  %>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "Inicio", root_path %></li>
+    <% else %>
+<!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "Iniciar Sesión", root_path %></li>
+        <% end %>
+        <% if current_user  %>
+        <% case current_user.typeuser.to_i  %>
+        <% when 1 %>
+        <li><%= link_to "Proyectos",projects_path %></li>
+        <% when 2 %>
+        <li><%= link_to "Proyectos",projects_path %></li>
+        <li><%= link_to "Reportes",reports_path %></li>
+        <li><%= link_to "Tareas",works_path %></li>
+        <li><%= link_to "Actividades",activities_path %></li>
+        <% when 3%>
+        <li><%= link_to "Tareas",works_path %></li>
+        <li><%= link_to "Actividades",activities_path %></li>
+        <% end %>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+         <% if current_user %>
+        <li><p class="navbar-text">Bienvenido <%= current_user.email %>.</p></li>
+
+        <li><%= link_to "Log Out", logout_path %></li>
+        <% end %>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</div>
+
+
+<div class="container">
+<% if notice %>
+    <p style ="margin: 0.5em;" class="alert alert-success alert-dismissible"><%= notice %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+  <% end %>
+  <% if alert %>
+    <p style ="margin: 0.5em;" class="alert alert-danger alert-dismissible"><%= alert %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+  <% end %>
+
+
+
+<div class="col-md-12">
+<%= yield %>
+</div>
+</div>
+</body>
+</html>

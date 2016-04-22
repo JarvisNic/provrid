@@ -1,0 +1,23 @@
+<div class="col-md-6">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"> <%= @activity.name %></h3>
+  </div>
+  <div class="panel-body">
+    <%= @activity.description %><%= link_to  edit_activity_path,:id=>"boton_fase",style: 'float:right;'   do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+        <%end%>
+<% if @activity.status == 1 %>
+<div id="status" class="alert alert-success col-md-1" style="height:1em;float:right;margin:0 0.4em;" role="alert"><%= @activity.status %></div>
+<% elsif @activity.status == 2%>
+<div id="status" class="alert alert-info col-md-1" style="height:1em;float:right;margin:0 0.4em;" role="alert"><%= label "", @activity.status ,style: "position:relative;margin:0;top:-10px;" %></div>
+<% elsif @activity.status == 3%>
+<div id="status" class="alert alert-warning col-md-1" style="height:1em;float:right;margin:0 0.4em;" role="alert"><%= @activity.status %></div>
+<% end%>
+  </div>
+</div>
+</div>
+<br><br><br><br><br><br><br>
+
+<%= link_to 'Atras', activities_path, class: "btn btn-primary btn-lg" %>
+<div style="width: 10px;display:inline-block"></div>
+<%= link_to 'Editar', edit_activity_path(@activity) , class: "btn btn-primary btn-lg"%>

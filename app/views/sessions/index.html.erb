@@ -1,0 +1,89 @@
+<% if current_user %>
+<div class="jumbotron" style="margin:auto;">
+  <h1>Bienvenido</h1>
+  <p>Mostrando proyectos por coordinador</p>
+
+ <% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
+  <% @cordinator.each do |c|%>
+  <ol class="breadcrumb" style="background-color:#2E2E2E;color:#fff;">
+  <li style="width:95%;margin:auto;"><%= c.name  %><div style ="float:right;width:2em;"><%= link_to :controller => :projects,:action => :new, :id_cordi => c.id do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon glyphicon-folder-open"></i></div>	
+     <%end%></li>
+</ol>
+  <table class="table table-hover">
+<thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Objetivo</th>
+      <th>Tiempo</th>
+      <th>Estado</th>
+      <th>Fase</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>  
+ 	<% c.projects.each do |proje| %>
+
+
+  <tbody>
+	 <td><%= proje.name %></td>
+	 <td><%= proje.objetive %></td>
+	 <td><%= proje.time %></td>
+	 <td><%= proje.status %></td>
+	 <td><%= proje.fase %></td>
+	 <td><%= proje.cordinators %></td>
+	 <td style="width:2em;"><%= link_to :controller => :activities,:action => :new,:id_tarea => c.id do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-eye-open" style="width:5em;padding-left:2em;height:3em;"><span style="position:relative;top:1em;right:2.3em;" >Mostrar</span></i>
+       <%end%></td>
+     <td style="width:3em;"><%= link_to :controller => :activities,:action => :new,:id_tarea => c.id do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
+     <%end%></td>
+     
+<% end%>
+</tbody>
+</table>
+<% end%>
+
+
+  
+
+ <%  else %>
+ 
+<% @cordinator.each do |c|%>
+  <ol class="breadcrumb" style="background-color:#2E2E2E;text-color:#000;">
+  <li style="width:95%;margin:auto;"><%= c.name  %><div style ="float:right;width:2em;"><%= link_to :controller => :projects,:action => :new do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon glyphicon-folder-open"></i></div>  
+     <%end%></li>
+</ol>
+  <table class="table table-hover">
+<thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Objetivo</th>
+      <th>Tiempo</th>
+      <th>Estado</th>
+      <th>Fase</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>  
+  <% c.projects.each do |proje| %>
+
+
+  <tbody>
+   <td><%= proje.name %></td>
+   <td><%= proje.objetive %></td>
+   <td><%= proje.time %></td>
+   <td><%= proje.status %></td>
+   <td><%= proje.fase %></td>
+   <td><%= proje.cordinators %></td>
+   <td style="width:3em;"><%= link_to :controller => :activities,:action => :new,:id_tarea => c.id do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+       <%end%></td>
+     
+<% end%>
+</tbody>
+</table>
+<% end%>
+
+
+
+<% end %>
+<% else %>
+<div class="col-md-6">
+<%= render 'new' %>
+</div>
+<% end %>

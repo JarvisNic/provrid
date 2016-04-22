@@ -1,0 +1,25 @@
+<%= form_for(@activity) do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= f.label :Estado,:style=>'float:left;'%>
+    <%= f.select :status, 
+    options_for_select([['En espera',1],['En proceso',2],['Finalizado',3]], params[:area]),
+    {}, { :class => 'form-control' ,:style=>"width:20%;float:left;margin:0 0.3em ;"} %>
+  </div><br><br>
+ <hr>
+  <br><br><br>
+  <div class="actions">
+    <%= f.submit "Insertar",class: "btn btn-primary btn-lg",style: "margin:0 5em;"%>
+  </div><br>
+<% end %>

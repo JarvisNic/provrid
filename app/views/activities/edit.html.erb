@@ -1,0 +1,13 @@
+<% if current_user.typeuser.to_i == 3 || current_user.typeuser.to_i == 2 || current_user.typeuser.to_i == 1 %>
+<h1 style="float:left"><%=@activity.name%></h1>
+<h4 style="float:left;margin:1.6em 2em;"><%=@activity.description%></h4>
+<br><br><br><br>
+<%= render 'form1' %>
+
+
+<%= link_to 'Atras', activities_path, :class=>"btn btn-primary btn-lg",:style=> "top:-65px;position:relative;"%>
+
+<%else%>
+<h1>Acceso denegado :)</h1>
+<%= link_to 'atras', root_path, class: 'btn btn-primary btn-sm', :style => "float:left" %>
+<% end %>

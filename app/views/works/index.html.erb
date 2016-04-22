@@ -1,0 +1,52 @@
+
+<% if current_user %>
+
+<h1 style="float:left">Mostrando las Tareas para <%= current_user.cordinator.name %>
+</h1><br><br><br><br>
+
+<% c = current_user.cordinator %>
+<% c.projects.each do |p| %>
+
+<% p.reports.each do |m| %>
+<table class="table table-hover">
+<thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Objetivo</th>
+      <th>Descripción</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Fin</th>
+      <th>Actividades</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+  <ol class="breadcrumb" style="background-color:#2E2E2E;">
+  <li><a href="#"><%= c.name  %></a></li>
+  <li style="width:90%;margin:auto;"><a href="#"><%= m.name %><div style ="float:right;width:2em;"><%= link_to new_work_path(:id_report=>  m.id,:name=>m.name),{:title=>"Nueva Tarea"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-ok"></i></div>  
+     <%end%></a></li>
+</ol>
+<% m.works.each do |n| %>
+        <td><%= n.name %></td>
+        <td><%= n.objetive %></td>
+        <td><%= n.descripcion %></td>
+        <td><%= n.fecha_inicio %></td>
+        <td><%= n.fecha_fin %></td>
+        <td><% n.activities.each do |p| %><%= link_to p.name, p %><br><%end %></td>
+        <td><%= link_to new_activity_path(:id_tarea => n.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+        <%end%></td>
+</tbody>
+<%end%>
+
+<%end%>
+
+<%end%>
+  
+
+</table>
+
+<br>
+
+  <% else %>
+<h1>Acceso denegado :)</h1>
+<%end%>

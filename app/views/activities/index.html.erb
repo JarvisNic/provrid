@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mostrando Actividades para <%=current_user.cordinator.name%></h1>
+
+<% c = current_user.cordinator.projects.each do |c|%>
+  <% c.reports.each do |m| %>
+<% m.works.each do |i| %>
+<% i.activities.each do |activity| %>
+<div class="col-md-4">
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title"> <%= activity.name %></h3>
+  </div>
+  <div class="panel-body">
+    <%= activity.description %><%= link_to edit_activity_path(activity) ,:id=>"boton_fase",style: 'float:right;'   do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+        <%end%>
+<% if activity.status == 1 %>
+<div id="status" class="alert alert-success col-md-1" style="height:1em;float:right;margin:0 0.4em;" role="alert"><%= label "", activity.status ,style: "position:relative;margin:0;top:-10px;" %></div>
+<% elsif activity.status == 2%>
+<div id="status" class="alert alert-info col-md-1" style="height:1em;float:right;margin:0 0.4em;" role="alert"><%= label "", activity.status ,style: "position:relative;margin:0;top:-10px;" %></div>
+<% elsif activity.status == 3%>
+<div id="status" class="alert alert-warning col-md-1" style="height:1em;float:right;margin:0 0.4em;" role="alert"><%= label "", activity.status ,style: "position:relative;margin:0;top:-10px;" %></div>
+<% end%>
+  </div>
+</div>
+</div>
+<% end%>
+<% end%>
+<% end%>
+<% end%>

@@ -1,0 +1,36 @@
+
+<% if current_user %>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Cordinators</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Facultad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cordinators.each do |cordinator| %>
+      <tr>
+        <td><%= cordinator.name %></td>
+        <td><%= cordinator.address %></td>
+        <td><%= cordinator.phone %></td>
+        <td><%= cordinator.facultad.present? %></td>
+        <td><%= link_to 'Show', cordinator %></td>
+        <td><%= link_to 'Edit', edit_cordinator_path(cordinator) %></td>
+        <td><%= link_to 'Destroy', cordinator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cordinator', new_cordinator_path %>
+<% end %>

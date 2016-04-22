@@ -1,0 +1,12 @@
+<%if current_user %>
+<h1>Editing User</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
+<%	else %>
+<P>Acceso Denegado por favor comuniquese con el admin si se trata de un error del sistema lo sentimos</P>
+<%= link_to 'Back', users_path %>
+
+<%	end %> 

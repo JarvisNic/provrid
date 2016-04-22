@@ -1,0 +1,135 @@
+<p id="notice"><%= notice %></p>
+
+<% if current_user%>
+  <% case current_user.typeuser.to_i  %>
+<% when 1 %>
+
+
+<h1>Mostrando Usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Typeuser</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.address %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.typeuser %></td>
+        <td><%= link_to 'Mostrar', user %></td>
+        <td><%= link_to 'Actualizar', edit_user_path(user) %></td>
+        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Estás seguro' } %></td>
+        <%if current_user.name == user.name %>
+        <td><%= link_to 'Actualizar mi perfil', edit_user_path(user) %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Agregar Coordinador', new_user_path %>
+
+
+  <% when 2 %>
+
+
+<h1>Mostrando Usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Typeuser</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.address %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.typeuser %></td>
+        <td><%= link_to 'Mostrar', user %></td>
+        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Estás seguro' } %></td>
+        <%if current_user.name == user.name %>
+        <td><%= link_to 'Actualizar mi perfil', edit_user_path(user) %></td>
+        <%=current_user.name%>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Agregar un Coordinador', new_user_path %>
+
+
+
+<% when 3 %>
+
+<%= link_to "Asignar una Tarea", :controller => :works, :action => :new %>
+<h1>Mostrando Usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo</th>
+      <th>Dirrección</th>
+      <th>Telefono</th>
+      <th>Rango</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.address %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.typeuser %></td>
+        <td><%= link_to 'Ver su Perfil', user %></td>
+        
+        <%if current_user.name == user.name %>
+        <td><%= link_to 'Actualizar mi perfil', edit_user_path(user) %></td>
+        <%=current_user.name%>
+        <%end%>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%end%>
+<%end%>
+
+
+

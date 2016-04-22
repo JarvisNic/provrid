@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Objetive:</strong>
+  <%= @project.objetive %>
+</p>
+
+<p>
+  <strong><%= @project.reports.name%></strong>
+</p>
+
+<table>
+
+<thead>
+    <tr>
+      <th>Name</th>
+      <th>Objetive</th>
+      <th>Coordinador</th>
+      <th>Time</th>
+      <th>Status</th>
+      <th>Fase</th>
+      <th>Reportes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @project.reports.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <% project.works.each do |p| %>
+        <td><%=  p.name %></td>
+        <%end%>
+        <td><%= link_to 'Ver', project %></td>
+        <td><%= link_to 'Actualizar', edit_project_path(project) %></td>
+        <td><%= link_to 'Eliminar', project, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<p>
+  <strong>Time:</strong>
+  <%= @project.time %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @project.status %>
+</p>
+
+<p>
+  <strong>Fase:</strong>
+  <%= @project.fase %>
+</p>
+<p>
+  <strong>Usuario</strong>
+  <%= User.name %>
+</p>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

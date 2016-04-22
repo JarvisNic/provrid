@@ -1,0 +1,29 @@
+ <%= link_to "Log In", login_path %>
+<% if current_user %>
+      <h1>Eres Bienvenido</h1>
+      <p>Bienvenido al inicio del Sistema de Plan Operativo Individual de la VRID </p>
+<% case current_user.typeuser.to_i  %>
+<% when 1 %>
+		<%= link_to "Asignar un proyecto", new_user_project_path(current_user)  %>
+		<%= link_to "Asignar una Tarea", :controller => :works, :action => :new %>
+		<%= link_to "Ver mis coordinadores", :controller => :users, :action => :index %> 
+		<%= link_to "Ver los Proyectos", :controller => :projects, :action => :index %>
+		<%= link_to "Ingresar un nuevo Coordinador", :controller => :users, :action => :new %>
+
+
+ <% when 2 %>
+ 
+ 		<%= link_to "Asignar un proyecto", new_user_project_path(current_user)  %>
+		<%= link_to "Asignar una Tarea", :controller => :works, :action => :new %>
+		<%= link_to "Ver los coordinadores", :controller => :users, :action => :index %> 
+		<%= link_to "Ver los Proyectos", :controller => :projects, :action => :index %>
+
+
+ <%  when 3 %>
+ 		<%= link_to "Ver los Proyectos", :controller => :projects, :action => :index %>
+      	<%= link_to "Ver los Perfiles", :controller => :users, :action => :index %> 
+      	<%= link_to "Crear tarea", :controller => :works, :action => :new %>
+
+ <% else %>
+<% end %>
+<% end %>

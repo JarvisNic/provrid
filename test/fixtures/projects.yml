@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  objetive: MyString
+  responsable: MyString
+  time: MyString
+  status: MyString
+  fase: MyString
+
+two:
+  name: MyString
+  objetive: MyString
+  responsable: MyString
+  time: MyString
+  status: MyString
+  fase: MyString

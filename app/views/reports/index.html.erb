@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<% if current_user %>
+<h1 style="float:left">Mostrando los reportes para <%= current_user.cordinator.name %>
+</h1>
+<% c = current_user.cordinator %>
+     <% c.projects.each do |m| %>
+<table class="table table-hover"><br><br><br><br>
+<thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha</th>
+      <th>Descripción</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <ol class="breadcrumb" style="background-color:#2E2E2E;">
+  <li style="width:95%;margin:auto;"><a href="#"><%= m.name %><div style ="float:right;width:2em;"><%= link_to new_report_path(:id_project=>  m.id,:name=>m.name),{:title=>"Nuevo Reporte"},{} do %><i class="btn btn-default btn-sm glyphicon glyphicon-file"></i></div>  
+     <%end%></a></li>
+</ol>
+<% m.reports.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.date %></td>
+        <td><%= f.desc %></td>
+
+        <td><%= link_to  :controller => :works,:action => :new,:id_tarea => f.id, :name => f.name do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+        <%end%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
+<br>
+
+
+<% else %>
+<h1>Acceso denegado :)</h1>
+<% end %>

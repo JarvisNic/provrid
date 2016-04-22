@@ -1,0 +1,9 @@
+<p>NO tienes acceso a esta parte de mi SISTEMA, asi que vete</p>
+<%if current_user %>
+<h1>Editando perfil de Coordinador</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @cordinator %> |
+<%= link_to 'Back', cordinators_path %>
+<% end %>
