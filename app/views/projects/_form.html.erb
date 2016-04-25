@@ -1,43 +1,52 @@
 <%= form_for (@project) do |f| %>
   <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-      <ul>
-      <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <div class="field" style="display:none;">
+    <%= f.number_field :cordinator_id,:value=> params[:id_cordi] %>
+  </div>
+    <% else %>
+    <div class="field" style="display:none;">
+    <%= f.number_field :cordinator_id,:value=> params[:id_cordi] %>
+  </div>
   <% end %>
+<hr>
+ <div class="control-group<%= @project.errors[:name].any? ? " error" : "" %>">
+   <%= f.label :Nombre_Proyecto ,:style=>"width:11%;float:left;margin:0.3em ;" %>
+   <div class="controls">
+     <%= f.text_field :name, :class => 'form-control' ,:style=>"float:left;width:30%" %>
+     <span class="help-inline">
+      <%= @project.errors[:name].any? ? @project.errors[:name].to_s[/\w([^"]*)/] : "" %></span>
+   </div>
+ </div></br></br></br>
 
+<div class="control-group<%= @project.errors[:objetive].any? ? " error" : "" %>">
+   <%= f.label :Objetivo_proyecto ,:style=>"width:11%;float:left;margin:0.2em ;"%>
+   <div class="controls">
+     <%= f.text_area :objetive, :class => 'form-control' ,:style=>"float:left;width:62%"%>
+     <span class="help-inline">
+      <%= @project.errors[:objetive].any? ? @project.errors[:objetive].to_s[/\w([^"]*)/] : "" %></span>
+   </div>
+ </div></br></br></br></br>
+  
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name,class: "form-control " %>
+    <%= f.label :tiempo ,:style=>"width:11%;float:left;margin:0.2em ;" %>
+    <%=  f.text_field :time,class: "form-control "  ,:style=>"float:left;width:15%"%>
   </div>
   <div class="field">
-    <%= f.label :objetive %><br>
-    <%= f.text_field :objetive,class: "form-control " %>
-  </div>
+    <%= f.label :Estado ,:style=>"width:11%;float:left;margin:0.2em ; "%>
+   <%= f.select :status ,[['En proceso',2], ['Finalizado',3]], {},{:class => "form-control",:style=>"float:left;width:30%" }%>
+  </div></br></br></br>
   <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time,class: "form-control " %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status,class: "form-control " %>
-  </div>
-  <div class="field">
-    <%= f.label :fase %><br>
-    <%= f.text_field :fase,class: "form-control " %>
-  </div>
+    <%= f.label :fase ,:style=>"width:11%;float:left;margin:0.3em ;" %>
+    <%= f.text_field :fase,class: "form-control ",:style=>"float:left;width:10%" %>
+  </div></br>
+   <hr>
    <div class="field" style="display:none;">
     <%= f.number_field :cordinator_id,:value=> params[:id_cordi] %>
   </div>
   
   
   <div class="actions">
-    <%= f.submit "Insertar" ,class: "btn btn-primary btn-sm"%>
+    <%= f.submit "Insertar" ,class: "btn btn-primary btn-lg",:style=>"margin:0 5em"%>
   </div>
     </div>
 <% end %>
