@@ -1,35 +1,31 @@
-<%= form_for(@activity) do |f| %>
- 
-  
-<div class="control-group<%= @activity.errors[:name].any? ? " error" : "" %>">
-   <%= f.label :Nombre_actividad ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-   <div class="form-group has-warning has-feedback">
-     <%= f.text_field :name, :class => 'form-control' ,:style=>"float:left;width:30%" %>
-     <span class="help-inline">
-      <%= @activity.errors[:name].any? ? @activity.errors[:name].to_s[/\w([^"]*)/] : "" %></span>
-   </div>
- </div>
+<%= form_for @activity do |f| %>
+
+  <%= f.label :Nombre ,:style=>"width:11%;float:left;margin:0.3em ;"%>
+  <%= f.text_field :name ,:class=> "form-control nombre",:style=>"float:left;width:30%"%>
+
+   
+
    <div class="field">
-    <%= f.label :Estado,:style=>"width:11%;float:left;margin:0.3em ;"%>
+    <%= f.label :Estado,:style=>"width:11%;float:left;margin:0.3em ;" %>
     <%= f.select :status,([['En proceso', 2], ['Finalizado', 3], ]),{}, {:class=> "form-control",:style=>"float:left;width:30%" }%>
-  </div><br><br>
- <div class="control-group<%= @activity.errors[:description].any? ? " error" : "" %>">
-   <%= f.label :Description ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-   <div class="controls">
-     <%= f.text_area :description, :class => 'form-control' ,:style=>"float:left;width:62%" %>
-     <span class="help-inline">
-      <%= @activity.errors[:description].any? ? @activity.errors[:description].to_s[/\w([^"]*)/] : "" %></span>
-   </div>
- </div>
+  </div><br><br><br>
+
+<div class="field">
+    <%= f.label :Descrición,:style=>"width:11%;float:left;margin:0.3em ;", class: "descripcion" %>
+    <%= f.text_area :description ,:class=> "form-control desc",:style=>"float:left;width:72%"%>
+  </div>
   <br><br><br>
- <hr></hr>
- 
-  <div class="field" style="display:none;">
+ <hr>
+
+ <div class="actions" >
+    <%= f.submit "Insertar",class: "btn btn-primary btn-lg boton",style: "margin:0 5em;",:onclick => "return validacion()"%>
+  </div><br> 
+
+ <div class="field" style="display:none;">
     <%= f.label :work_id %>
     <%= f.number_field :work_id ,:value => params[:id_tarea]%>
   </div>
-  
-  <div class="actions">
-    <%= f.submit "Insertar",class: "btn btn-primary btn-lg",style: "margin:0 5em;"%>
-  </div><br>
+
+
+
 <% end %>

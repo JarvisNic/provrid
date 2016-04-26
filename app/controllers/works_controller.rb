@@ -4,7 +4,8 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all#Work.where(id = current_user.cordinator.project.reports.works.id)
+    @works = Work.all#.order('name ASC').page(params[:page]).per(3)#Work.where(id = current_user.cordinator.project.reports.works.id)
+    @cordinator = Cordinator.all.order('name ASC').page(params[:page]).per(3)
   end
 
   # GET /works/1

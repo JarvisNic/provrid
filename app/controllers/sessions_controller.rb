@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def index
-    @cordinator = Cordinator.all.order('name ASC').page(params[:page]).per(3)
+    @cordinator = Cordinator.all.order('name ASC').page(params[:page]).per(2)
  
     @proyects = Project.all
 
