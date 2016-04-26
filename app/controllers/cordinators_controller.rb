@@ -4,8 +4,8 @@ class CordinatorsController < ApplicationController
   # GET /cordinators
   # GET /cordinators.json
   def index
-    @cordinators = Cordinator.all
-    @cordinator = Cordinator.order('name ASC').page(params[:page]).per(5)
+    @cordinators = Cordinator.all.order('name ASC').page(params[:page]).per(3)
+ 
     
   end
 
@@ -30,7 +30,7 @@ class CordinatorsController < ApplicationController
 
     respond_to do |format|
       if @cordinator.save
-        format.html { redirect_to @cordinator, notice: 'Cordinator was successfully created.' }
+        format.html { redirect_to @cordinator, notice: 'El cordinador se ha creado correctamente' }
         format.json { render :show, status: :created, location: @cordinator }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class CordinatorsController < ApplicationController
   def update
     respond_to do |format|
       if @cordinator.update(cordinator_params)
-        format.html { redirect_to @cordinator, notice: 'Cordinator was successfully updated.' }
+        format.html { redirect_to @cordinator, notice: 'El cordinador se ha actualizado correctamente' }
         format.json { render :show, status: :ok, location: @cordinator }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class CordinatorsController < ApplicationController
   def destroy
     @cordinator.destroy
     respond_to do |format|
-      format.html { redirect_to cordinators_url, notice: 'Cordinator was successfully destroyed.' }
+      format.html { redirect_to cordinators_url, notice: 'El cordinador se ha eliminado correctamente' }
       format.json { head :no_content }
     end
   end

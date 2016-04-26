@@ -12,7 +12,7 @@
       </div></div><br>
 
     <div class="form-group has-error<%= @work.errors[:descripcion].any? ? " error" : "" %> ">
-    <%= f.label :descripcion,:style=>"width:11%;float:left;margin:0.3em 0;" %>
+    <%= f.label :Descripcion,:style=>"width:11%;float:left;margin:0.3em 0;" %>
     <div class="controls">
     <%= f.text_area :descripcion,:class=> "form-control",:style=>"float:left;width:30%", :placeholder => "Descripición de MI TAREA" %>
     <span class="help-inline">
@@ -28,11 +28,11 @@
     </div></div><br>
   
     <div class="field">
-    <%= f.label :fecha_inicio ,:style=>"width:11%;float:left;margin:0.3em 0;"%>
+    <%= f.label :Fecha_inicio ,:style=>"width:11%;float:left;margin:0.3em 0;"%>
     <%= f.date_select :fecha_inicio, {}, {:class=>'form-control date-control', :style=>'float:left;width:10%;'} %>
     </div>
     <div class="field">
-    <%= f.label :fecha_fin ,:style=>"width:11%;float:left;margin:0.3em 1em;"%>
+    <%= f.label :Fecha_fin ,:style=>"width:11%;float:left;margin:0.3em 1em;"%>
     <%= f.date_select :fecha_fin , {}, {:class=>'form-control date-control', :style=>'float:left;width:10%;'}%>
     </div>
     </div>

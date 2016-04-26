@@ -10,8 +10,7 @@
 
 
 <% end %> 
-<%= timeline [
-  [a.name , a.created_at, Time.now]] %>
+
 <div class="col-lg-2 col-md-2 col-sm-2"><strong>Name</strong></div>
 <div class="col-lg-2 col-md-2 col-sm-2"><strong>Objetive</strong></div>
 <div class="col-lg-2 col-md-2 col-sm-2"><strong>Coordinador</strong></div>
@@ -65,7 +64,7 @@
  </div>
     <% end %>
 
-
+<%= paginate(@projects) %>
 
 <br>
 <%= link_to 'Asignar un Proyecto', new_project_path %>

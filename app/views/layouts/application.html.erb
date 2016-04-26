@@ -39,14 +39,17 @@
         <% case current_user.typeuser.to_i  %>
         <% when 1 %>
         <li><%= link_to "Proyectos",projects_path %></li>
+   
         <% when 2 %>
         <li><%= link_to "Proyectos",projects_path %></li>
         <li><%= link_to "Reportes",reports_path %></li>
         <li><%= link_to "Tareas",works_path %></li>
         <li><%= link_to "Actividades",activities_path %></li>
+     
         <% when 3%>
         <li><%= link_to "Tareas",works_path %></li>
         <li><%= link_to "Actividades",activities_path %></li>
+        
         <% end %>
         <% end %>
       </ul>
@@ -54,7 +57,7 @@
          <% if current_user %>
         <li><p class="navbar-text">Bienvenido <%= current_user.email %>.</p></li>
 
-        <li><%= link_to "Log Out", logout_path %></li>
+        <li><%= link_to "Cerrar Sesión", logout_path %></li>
         <% end %>
 
       </ul>
