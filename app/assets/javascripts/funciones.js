@@ -1,7 +1,8 @@
 function validacion() {
   if ($('.nombre').val().length < 4) {
     // Si no se cumple la condicion...
-    alert('[ERROR] Debe ingresar un nombre');
+    $(".nombre").focus().after("<span class='error'>Ingrese su nombre </span>");
+    //alert('[ERROR] Debe ingresar un nombre');
     return false;
   }
   else if ($('.desc').val().length < 10) {

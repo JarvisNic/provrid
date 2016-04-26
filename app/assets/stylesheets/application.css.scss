@@ -13,3 +13,23 @@ hr {border: 0; height: 2px; text-align: center; background-image: linear-gradien
 .chart{
 	height: 90px;
 }
+.error{
+	background-color: #bc1010;
+	padding: 6px 12px;
+	border-radius: 4px;
+	color: white;
+	font-weight: bold;
+	margin-left: 16px;
+	margin-top: 10px;
+	position: absolute;
+}
+.error:before{
+	content: '';
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 8px solid transparent;
+	border-right: 8px solid #bc1010;
+	left: -15px;
+	position: absolute;
+	top: 5px;
+}
