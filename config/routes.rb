@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :cordinators
   resources :projects
   resources :facultads
+  get 'charts/dataas'
  resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

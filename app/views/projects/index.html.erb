@@ -5,12 +5,8 @@
 
 <h1 style="float:left">Mostrando Proyectos</h1>
 <br><br><br><br>
-<% a = @projects.find_by_name(:proyecto2) %>
-<% @projects.each do |e| %>
 
-
-<% end %> 
-
+<%= bar_chart Project.group(:name).sum(:cordinator_id) %>
 <div class="col-lg-2 col-md-2 col-sm-2"><strong>Name</strong></div>
 <div class="col-lg-2 col-md-2 col-sm-2"><strong>Objetive</strong></div>
 <div class="col-lg-2 col-md-2 col-sm-2"><strong>Coordinador</strong></div>

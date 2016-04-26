@@ -1,9 +1,21 @@
 <% if current_user %>
+ <% data = [] %>
+  <% c = current_user.cordinator %>
+  <% c.projects.each do |m| %>
+  <% m.reports.each do |f| %>
+  <% f.works.each do |b| %>
+  <% b.activities.each do |a| %>
+  <% data.push(a) %>
+  <% end %>
+  <% end %>
+  <% end %>
+  <% end %>
 
+    <%= pie_chart Activity.group("activities.status").joins(work: [{ report: :project }]).sum(:status) %>
+  
 <div class="jumbotron" style="margin:auto;">
   <h1>Bienvenido</h1>
   <p>Mostrando proyectos por coordinador</p>
-
  <% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
  <%= paginate(@cordinator) %>
   <% @cordinator.each do |c|%>
@@ -43,9 +55,7 @@
 </table>
 
 
-<%= line_chart Project.group_by_day(:created_at).count %>
 <% end %>
-<%= pie_chart Project.group(:name).count %>
  <%  else %>
  
 <% @cordinator.each do |c|%>

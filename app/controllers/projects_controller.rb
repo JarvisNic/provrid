@@ -14,7 +14,9 @@ class ProjectsController < ApplicationController
       @projects = Project.order('name ASC').page(params[:page]).per(5)
     end
   end
-
+  def dataas
+    render json: Project.group_by_month(:created_at, format: "%b  %d").count
+  end
 
   # GET /projects/1
   # GET /projects/1.json
