@@ -1,18 +1,16 @@
 <%= form_for (@project) do |f| %>
   <% if @project.errors.any? %>
-    <div class="field" style="display:none;">
-    <%= f.number_field :cordinator_id,:value=> params[:id_cordi] %>
-  </div>
-    <% else %>
-    <div class="field" style="display:none;">
-    <%= f.number_field :cordinator_id,:value=> params[:id_cordi] %>
-  </div>
+    
   <% end %>
 <hr>
  <div class="control-group<%= @project.errors[:name].any? ? " error" : "" %>">
    <%= f.label :Nombre_Proyecto ,:style=>"width:11%;float:left;margin:0.3em ;" %>
    <div class="controls">
      <%= f.text_field :name, :class => 'form-control' ,:style=>"float:left;width:30%" %>
+     <div class="field">
+    <%= f.label :Duración_en_meses ,:style=>"width:13%;float:left;margin:0.2em 0.8em;" %>
+    <%= number_field_tag :time, '1', class: 'form-control',:style=>"width:7%;float:left;"%>
+  </div>
      <span class="help-inline">
       <%= @project.errors[:name].any? ? @project.errors[:name].to_s[/\w([^"]*)/] : "" %></span>
    </div>
@@ -27,10 +25,7 @@
    </div>
  </div></br></br></br></br>
   
-  <div class="field">
-    <%= f.label :tiempo ,:style=>"width:11%;float:left;margin:0.2em ;" %>
-    <%=  f.text_field :time,class: "form-control "  ,:style=>"float:left;width:15%"%>
-  </div>
+  
   <div class="field">
     <%= f.label :Estado ,:style=>"width:11%;float:left;margin:0.2em ; "%>
    <%= f.select :status ,[['En proceso',2], ['Finalizado',3]], {},{:class => "form-control",:style=>"float:left;width:30%" }%>
@@ -40,8 +35,8 @@
     <%= f.text_field :fase,class: "form-control ",:style=>"float:left;width:10%" %>
   </div></br>
    <hr>
-   <div class="field" style="display:none;">
-    <%= f.number_field :cordinator_id,:value=> params[:id_cordi] %>
+   <div class="field" style=";">
+    <%= f.text_field :cordinator_id,:value=> params[:id_cordi] %>
   </div>
   
   

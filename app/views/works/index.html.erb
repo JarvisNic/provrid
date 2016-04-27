@@ -22,7 +22,6 @@
   </thead>
   
   <ol class="breadcrumb" style="background-color:#2E2E2E;">
-  <li><a href="#"><%= c.name  %></a></li>
   <li style="width:90%;margin:auto;"><a href="#"><%= m.name %><div style ="float:right;width:2em;"><%= link_to new_work_path(:id_report=>  m.id,:name=>m.name),{:title=>"Nueva Tarea"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-ok"></i></div>  
      <%end%></a></li>
 </ol>
@@ -32,9 +31,14 @@
         <td><%= n.descripcion %></td>
         <td><%= n.fecha_inicio %></td>
         <td><%= n.fecha_fin %></td>
-        <td><% n.activities.each do |p| %><%= link_to p.name, p %><br><%end %></td>
+        <td><% n.activities.each do |q| %><%= link_to q.name, q %><br><%end %></td>
         <td><%= link_to new_activity_path(:id_tarea => n.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
-        <%end%></td>
+        <%end%>
+        <%= link_to work_path(n),{:title=> "Editar Tarea"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i>
+        <%end%>
+        <%= link_to n, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"",:title=>"Eliminar Tarea" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
+        <%end%>
+        </td>
 </tbody>
 <%end%>
 

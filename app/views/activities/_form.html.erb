@@ -24,7 +24,12 @@
     <%= f.label :work_id %>
     <%= f.number_field :work_id ,:value => params[:id_tarea]%>
   </div>
-
+<script type="text/javascript">
+$( "input" ).keyup(function() {
+ if (($('.nombre').val().length > 4) && ($('.desc').val().length > 11)) {
+    $('.error').style.display = 'none';
+  }
+});</script>
 
 
 <% end %>
