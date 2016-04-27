@@ -1,5 +1,8 @@
 <%= form_for (@project) do |f| %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 413b792ee601e051a4397a5e01ed6a9ec1a6fccb
 <hr>
     <div class="field">
   <%= f.label :Nombre_Proyecto ,:style=>"width:11%;float:left;margin:0.3em ;" %>
@@ -9,11 +12,22 @@
     <div class="field">
    <%= f.label :Objetivo_proyecto ,:style=>"width:11%;float:left;margin:0.2em ;"%>
    <%= f.text_area :objetive, :class => 'form-control objepo' ,:style=>"float:left;width:62%" , :placeholder => "El objetivo del Proyecto debe terner  "%>
+<<<<<<< HEAD
     </div></br>
 
   
   </br></br></br>
   <div class="field">
+=======
+    </div></br></br></br></br>
+  
+  <div class="field">
+    <%= f.label :Estado ,:style=>"width:11%;float:left;margin:0.2em ; "%>
+   <%= f.select :status ,[['En proceso',2], ['Finalizado',3]], {},{:class => "form-control",:style=>"float:left;width:30%" }%>
+  </div></br></br></br>
+  <div class="field">
+
+>>>>>>> 413b792ee601e051a4397a5e01ed6a9ec1a6fccb
     <div class="field">
   <%= f.label :tiempo ,:style=>"width:11%;float:left;margin:0.2em ;" %>
   <%=  f.text_field :time,class: "form-control timep"  ,:style=>"float:left;width:15%"%>
@@ -25,14 +39,21 @@
     </div></br></br></br>
   <div class="field">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 413b792ee601e051a4397a5e01ed6a9ec1a6fccb
     <%= f.label :fase ,:style=>"width:11%;float:left;margin:0.3em ;" %>
     <%= f.text_field :fase,class: "form-control fasepo",:style=>"float:left;width:10%" %>
   </div></br></br>
    <hr>
+<<<<<<< HEAD
    <div class="field" style="display:none;">
+=======
+   <div class="field" style="display;none">
+>>>>>>> 413b792ee601e051a4397a5e01ed6a9ec1a6fccb
     <%= f.text_field :cordinator_id,:value=> params[:id_cordi] %>
   </div>
-  
   
   <div class="actions">
     <%= f.submit "Insertar" ,class: "btn btn-primary btn-lg valipro",:style=>"margin:0 5em", :onclick => "return  validapro()"%>
