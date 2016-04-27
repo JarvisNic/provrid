@@ -14,7 +14,7 @@ hr {border: 0; height: 2px; text-align: center; background-image: linear-gradien
 	height: 90px;
 }
 .error{
-	background-color: #bc1010;
+	background-color: #087DFA;
 	padding: 6px 12px;
 	border-radius: 4px;
 	color: white;
@@ -28,8 +28,19 @@ hr {border: 0; height: 2px; text-align: center; background-image: linear-gradien
 	border-top: 8px solid transparent;
 	border-bottom: 8px solid transparent;
 	border-left: 8px solid transparent;
-	border-right: 8px solid #bc1010;
+	border-right: 8px solid #087DFA;
 	left: -15px;
 	position: absolute;
 	top: 5px;
+}
+
+.mirano{
+	background-color: #FDFCFC;
+	padding: 6px 12px;
+	border-radius: 4px;
+	color: white;
+	font-weight: bold;
+	margin-left: 16px;
+	margin-top: 10px;
+	position: absolute;
 }

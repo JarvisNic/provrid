@@ -27,7 +27,7 @@
         <td><%= f.date %></td>
         <td><%= f.desc %></td>
 
-        <td><%= link_to  :controller => :works,:action => :new,:id_tarea => f.id, :name => f.name do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+        <td><%= link_to new_work_path(:id_tarea => f.id, :name => f.name), {:title=>"Nueva Tarea"},{} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
         <%end%></td>
       </tr>
     <% end %>

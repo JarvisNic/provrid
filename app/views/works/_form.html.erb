@@ -1,69 +1,25 @@
 <%= form_for(@work) do |f| %>
-  <% if @work.errors.any? %>
-    <div id="error_explanation">
-      <h2> Los siguientes errores no permiten guardar la tarea</h2>
+<% if @work.errors.any? %>
+    
+      <h2> No puede guardar la tarea  si tiene errores:</h2>
+    
+      <% end %>
 <hr>
-    <div class="form-group has-error<%= @work.errors[:name].any? ? " error" : "" %> ">
-    <%= f.label :Nombre,:style=>"width:11%;float:left;margin:0.3em 0;" %>
-    <div class="controls">
-    <%= f.text_field :name ,:class=> "form-control",:style=>"float:left;width:30%", :placeholder => "MI TAREA"%>
-    <span class="help-inline">
-      <%= @work.errors[:name].any? ? @work.errors[:name].to_s[/\w([^"]*)/] : "" %></span>
-      </div></div><br>
-
-    <div class="form-group has-error<%= @work.errors[:descripcion].any? ? " error" : "" %> ">
-    <%= f.label :Descripcion,:style=>"width:11%;float:left;margin:0.3em 0;" %>
-    <div class="controls">
-    <%= f.text_area :descripcion,:class=> "form-control",:style=>"float:left;width:30%", :placeholder => "Descripición de MI TAREA" %>
-    <span class="help-inline">
-      <%= @work.errors[:descripcion].any? ? @work.errors[:descripcion].to_s[/\w([^"]*)/] : "" %></span>
-    </div></div><br><br>
-
-    <div class="form-group has-error<%= @work.errors[:objetive].any? ? " error" : "" %>">
-    <%= f.label :Objetivo,:style=>"width:11%;float:left;margin:0.3em 1em;" %>
-    <div class="controls">
-    <%= f.text_area :objetive,:class=> "form-control",:style=>"float:left;width:30%" ,:placeholder => "Objetivo de MI TAREA"%>
-    <span class="help-inline">
-      <%= @work.errors[:objetive].any? ? @work.errors[:objetive].to_s[/\w([^"]*)/] : "" %></span>
-    </div></div><br>
-  
-    <div class="field">
-    <%= f.label :Fecha_inicio ,:style=>"width:11%;float:left;margin:0.3em 0;"%>
-    <%= f.date_select :fecha_inicio, {}, {:class=>'form-control date-control', :style=>'float:left;width:10%;'} %>
-    </div>
-    <div class="field">
-    <%= f.label :Fecha_fin ,:style=>"width:11%;float:left;margin:0.3em 1em;"%>
-    <%= f.date_select :fecha_fin , {}, {:class=>'form-control date-control', :style=>'float:left;width:10%;'}%>
-    </div>
-    </div>
-    <br>
-  <hr>
-  <div class="actions">
-    <%= f.submit "Guardar",:class=> "btn btn-primary btn-lg",:style=>"margin:0 5em" ,:report_id=>params[:report_id],:name => params[:name]%>
-  </div>
-
-<div class="form-group has-error" style="display:none">
-    <%= f.label :report_id,:style=>"float:left;" %>
-    <%= f.number_field :report_id, :value=>params[:id_report] %>
-  </div>
-
-    <% else %>
-
-
+   
 <div class="field">
     <%= f.label :Nombre,:style=>"width:11%;float:left;margin:0.3em 0;" %>
-    <%= f.text_field :name ,:class=> "form-control",:style=>"float:left;width:30%" , :placeholder => "MI TAREA"%>
+    <%= f.text_field :name ,:class=> "form-control namew",:style=>"float:left;width:30%" , :placeholder => "MI TAREA DEBE TENER 10 CARACTERES"%>
   </div><br><br><br>
   <div class="field">
     <%= f.label :descripcion,:style=>"width:11%;float:left;margin:0.3em 0;" %>
-    <%= f.text_area :descripcion,:class=> "form-control",:style=>"float:left;width:30%", :placeholder => "Descripción de MI TAREA" %>
+    <%= f.text_area :descripcion,:class=> "form-control descw",:style=>"float:left;width:30%", :placeholder => "Descripción de MI TAREA debe ser de 30" %>
   </div>
   <div class="field">
     <%= f.label :Objetivo,:style=>"width:11%;float:left;margin:0.3em 1em;" %>
-    <%= f.text_area :objetive,:class=> "form-control",:style=>"float:left;width:35%" , :placeholder => "Objetivo de MI TAREA"%>
+    <%= f.text_area :objetive,:class=> "form-control objw",:style=>"float:left;width:35%" , :placeholder => "Objetivo de MI TAREA"%>
   </div><br><br><br>
   
-    <div class="field" style="">
+    <div class="field" style="display:none">
     <%= f.label :report_id,:style=>"float:left;" %>
     <%= f.number_field :report_id, :value=>params[:id_report] %>
   </div><br>
@@ -78,10 +34,9 @@
 <br>
   <hr>
   <div class="actions">
-    <%= f.submit "Guardar",:class=> "btn btn-primary btn-lg",:style=>"margin:0 5em" %>
+    <%= f.submit "Guardar",:class=> "btn btn-primary btn-lg",:style=>"margin:0 5em" ,:onclick => "return validacionr()" %>
   </div>
 
   <% end %>
 
-  
-<% end %>
+

@@ -21,7 +21,7 @@
 
   <% @cordinator.each do |c|%>
   <ol class="breadcrumb" style="background-color:#2E2E2E;color:#fff;">
-  <li style="width:95%;margin:auto;"><%= c.name  %><div style ="float:right;width:2em;"><%= link_to :controller => :projects,:action => :new, :id_cordi => c.id do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon glyphicon-folder-open"></i></div>	
+  <li style="width:95%;margin:auto;"><%= c.name  %><div style ="float:right;width:2em;"><%= link_to new_project_path(:id_cordi => c.id), {:title=>"Nuevo Proyecto"},{} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon glyphicon-folder-open"></i></div>	
      <%end%></li>
 
 </ol>
@@ -46,9 +46,7 @@
 	 <td><%= proje.status %></td>
 	 <td><%= proje.fase %></td>
 	 <td><%= proje.cordinators %></td>
-	 <td style="width:2em;"><%= link_to :controller => :activities,:action => :new,:id_tarea => c.id do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-eye-open" style="width:5em;padding-left:2em;height:3em;"><span style="position:relative;top:1em;right:2.3em;" >Mostrar</span></i>
-       <%end%></td>
-     <td style="width:3em;"><%= link_to :controller => :activities,:action => :new,:id_tarea => c.id do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
+     <td style="width:3em;"><%=  link_to p, method: :delete, data: { confirm: 'Estas seguro?' }  do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
      <%end%></td>
      
 <% end%>

@@ -1,34 +1,28 @@
 <%= form_for(@report) do |f| %>
  
 
-<div class="control-group<%= @report.errors[:name].any? ? " error" : "" %>">
-   <%= f.label :Nombre_reporte ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-   <div class="controls">
-     <%= f.text_field :name, :class => 'form-control' ,:style=>"float:left;width:30%" %>
-     <span class="help-inline">
-      <%= @report.errors[:name].any? ? @report.errors[:name].to_s[/\w([^"]*)/] : "" %></span>
-   </div>
- </div>
+
+<div class="field">
+    <%= f.label :Nombre_reporte ,:style=>"width:11%;float:left;margin:0.3em ;" %>
+    <%= f.text_field :name, :class => 'form-control nomre' ,:style=>"float:left;width:30%", :placeholder => "El reporte debe tener 10 caracteres" %>
+</div>
+  
   <div class="field">
     <%= f.label :Fecha_Reporte ,:style=>"width:11%;float:left;margin:0.3em 0.5em; " %>
     <%= f.date_select :date, {}, {:class=>'form-control date-control', :style=>'float:left;width: 10%;'}%> 
   </div><br><br><br>
- <div class="control-group<%= @report.errors[:desc].any? ? " error" : "" %>">
-   <%= f.label :Descripción_reporte ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-   <div class="controls">
-     <%= f.text_area :desc, :class => 'form-control' ,:style=>"float:left;width:70%" %>
-     <span class="help-inline">
-      <%= @report.errors[:desc].any? ? @report.errors[:desc].to_s[/\w([^"]*)/] : "" %></span>
-   </div>
+  <div class="field">
+    <%= f.label :Descripción_reporte ,:style=>"width:11%;float:left;margin:0.3em ;" %>
+     <%= f.text_area :desc, :class => 'form-control descrepo' ,:style=>"float:left;width:70%" , :placeholder => "La descripcion debe tener 20 caracteres"%>
  </div><br><br><br><br>
  
-  <hr size="40" />
+  <hr/>
 
   <div class="field" style="display:none">
     <%= f.label :project_id %><br>
     <%= f.text_field :project_id, :value => params[:id_project] %>
   </div>
   <div class="actions">
-    <%= f.submit "Guardar",class: "btn btn-primary btn-lg",style: "margin:0 5em;" %>
+    <%= f.submit "Guardar",class: "btn btn-primary btn-lg",style: "margin:0 5em;", :onclick => "return validareport()" %>
   </div>
 <% end %>
