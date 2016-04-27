@@ -1,4 +1,5 @@
 <%= form_for (@project) do |f| %>
+<<<<<<< HEAD
   <% if @project.errors.any? %>
     
   <% end %>
@@ -15,25 +16,43 @@
       <%= @project.errors[:name].any? ? @project.errors[:name].to_s[/\w([^"]*)/] : "" %></span>
    </div>
  </div></br></br></br>
+=======
 
-<div class="control-group<%= @project.errors[:objetive].any? ? " error" : "" %>">
+<hr>
+    <div class="field">
+  <%= f.label :Nombre_Proyecto ,:style=>"width:11%;float:left;margin:0.3em ;" %>
+  <%= f.text_field :name, :class => 'form-control nampo' ,:style=>"float:left;width:30%" , :placeholder => "El nombre del  proyecto debe tener 10 caracteres" %>
+    </div></br></br></br>
+>>>>>>> 63810d83659befa9cddab1c175b19bd16faf89ae
+
+    <div class="field">
    <%= f.label :Objetivo_proyecto ,:style=>"width:11%;float:left;margin:0.2em ;"%>
-   <div class="controls">
-     <%= f.text_area :objetive, :class => 'form-control' ,:style=>"float:left;width:62%"%>
-     <span class="help-inline">
-      <%= @project.errors[:objetive].any? ? @project.errors[:objetive].to_s[/\w([^"]*)/] : "" %></span>
-   </div>
- </div></br></br></br></br>
+   <%= f.text_area :objetive, :class => 'form-control objepo' ,:style=>"float:left;width:62%" , :placeholder => "El objetivo del Proyecto debe terner  "%>
+    </div></br></br></br></br>
   
+<<<<<<< HEAD
   
   <div class="field">
     <%= f.label :Estado ,:style=>"width:11%;float:left;margin:0.2em ; "%>
    <%= f.select :status ,[['En proceso',2], ['Finalizado',3]], {},{:class => "form-control",:style=>"float:left;width:30%" }%>
   </div></br></br></br>
   <div class="field">
+=======
+    <div class="field">
+  <%= f.label :tiempo ,:style=>"width:11%;float:left;margin:0.2em ;" %>
+  <%=  f.text_field :time,class: "form-control timep"  ,:style=>"float:left;width:15%"%>
+    </div>
+
+    <div class="field">
+  <%= f.label :Estado ,:style=>"width:11%;float:left;margin:0.2em ; "%>
+  <%= f.select :status ,[['En proceso',2], ['Finalizado',3]], {},{:class => "form-control",:style=>"float:left;width:30%" }%>
+    </div></br></br></br>
+  <div class="field">
+
+>>>>>>> 63810d83659befa9cddab1c175b19bd16faf89ae
     <%= f.label :fase ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-    <%= f.text_field :fase,class: "form-control ",:style=>"float:left;width:10%" %>
-  </div></br>
+    <%= f.text_field :fase,class: "form-control fasepo",:style=>"float:left;width:10%" %>
+  </div></br></br>
    <hr>
    <div class="field" style=";">
     <%= f.text_field :cordinator_id,:value=> params[:id_cordi] %>
@@ -41,7 +60,7 @@
   
   
   <div class="actions">
-    <%= f.submit "Insertar" ,class: "btn btn-primary btn-lg",:style=>"margin:0 5em"%>
+    <%= f.submit "Insertar" ,class: "btn btn-primary btn-lg valipro",:style=>"margin:0 5em", :onclick => "return  validapro()"%>
   </div>
     </div>
 <% end %>

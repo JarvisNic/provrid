@@ -1,17 +1,18 @@
 <%= form_for(@work) do |f| %>
 
-
+<hr>
+   
 <div class="field">
     <%= f.label :Nombre,:style=>"width:11%;float:left;margin:0.3em 0;" %>
-    <%= f.text_field :name ,:class=> "form-control",:style=>"float:left;width:30%" , :placeholder => "MI TAREA"%>
+    <%= f.text_field :name ,:class=> "form-control namew",:style=>"float:left;width:30%" , :placeholder => "MI TAREA DEBE TENER 10 CARACTERES"%>
   </div><br><br><br>
   <div class="field">
     <%= f.label :descripcion,:style=>"width:11%;float:left;margin:0.3em 0;" %>
-    <%= f.text_area :descripcion,:class=> "form-control",:style=>"float:left;width:30%", :placeholder => "Descripción de MI TAREA" %>
+    <%= f.text_area :descripcion,:class=> "form-control desc",:style=>"float:left;width:30%", :placeholder => "Descripción de MI TAREA debe ser de 30" %>
   </div>
   <div class="field">
     <%= f.label :Objetivo,:style=>"width:11%;float:left;margin:0.3em 1em;" %>
-    <%= f.text_area :objetive,:class=> "form-control",:style=>"float:left;width:35%" , :placeholder => "Objetivo de MI TAREA"%>
+    <%= f.text_area :objetive,:class=> "form-control objw",:style=>"float:left;width:35%" , :placeholder => "Objetivo de MI TAREA"%>
   </div><br><br><br>
   
     <div class="field" style="display:none;">
@@ -29,9 +30,8 @@
 <br>
   <hr>
   <div class="actions">
-    <%= f.submit "Guardar",:class=> "btn btn-primary btn-lg",:style=>"margin:0 5em" %>
+    <%= f.submit "Guardar",:class=> "btn btn-primary btn-lg",:style=>"margin:0 5em" ,:onclick => "return validacionw()" %>
   </div>
 
+<%end %>
 
-  
-<% end %>

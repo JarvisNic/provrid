@@ -26,8 +26,15 @@
         <td><%= f.date %></td>
         <td><%= f.desc %></td>
 
-        <td><%= link_to  :controller => :works,:action => :new,:id_report => f.id, :name => f.name do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
-        <%end%></td>
+        <td>
+        <%= link_to new_work_path(:id_report => f.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+        <%end%>
+        <%= link_to edit_report_path(f),{:title=> "Editar Reporte"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i>
+        <%end%>
+        <%= link_to f, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"",:title=>"Eliminar Reporte" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
+        <%end%>
+
+        </td>
       </tr>
     <% end %>
   </tbody>

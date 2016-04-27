@@ -8,15 +8,15 @@
 <% c.projects.each do |p| %>
 
 <% p.reports.each do |m| %>
-<table class="table table-hover">
+<table class = "table table-hover" style="width:9%;position:absolute" >
 <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Objetivo</th>
-      <th>Descripción</th>
-      <th>Fecha Inicio</th>
-      <th>Fecha Fin</th>
-      <th>Actividades</th>
+      <th class = "col-md-2 col-lg-2" style="width:30px;">Nombre</th>
+      <th class = "col-md-2 col-lg-2" style="width:30px;">Objetivo</th>
+      <th class = "col-md-2 col-lg-2" style="width:30px;">Descripción</th>
+      <th class = "col-md-2 col-lg-2" style="width:30px;">Fecha Inicio</th>
+      <th class = "col-md-2 col-lg-2" style="width:30px;">Fecha Fin</th>
+      <th class = "col-md-2 col-lg-2" style="width:30px;">Actividades</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,13 +26,13 @@
      <%end%></a></li>
 </ol>
 <% m.works.each do |n| %>
-        <td><%= n.name %></td>
-        <td><%= n.objetive %></td>
-        <td><%= n.descripcion %></td>
-        <td><%= n.fecha_inicio %></td>
-        <td><%= n.fecha_fin %></td>
-        <td><% n.activities.each do |q| %><%= link_to q.name, q %><br><%end %></td>
-        <td><%= link_to new_activity_path(:id_tarea => n.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+        <td style="width:20%"><%= n.name %></td>
+        <td style="width:20%"><%= n.objetive %></td>
+        <td style="width:20%"><%= n.descripcion %></td>
+        <td style="width:20%"><%= n.fecha_inicio %></td>
+        <td style="width:20%"><%= n.fecha_fin %></td>
+        <td style="width:20%"><% n.activities.each do |q| %><%= link_to q.name, q %><br><%end %></td>
+        <td style="width:20%"><%= link_to new_activity_path(:id_tarea => n.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
         <%end%>
         <%= link_to work_path(n),{:title=> "Editar Tarea"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i>
         <%end%>
@@ -42,12 +42,13 @@
 </tbody>
 <%end%>
 
-<%end%>
 
+<%end%>
+</table>
 <%end%>
   
 
-</table>
+
 <%paginate(@cordinator)%>
 <br>
 

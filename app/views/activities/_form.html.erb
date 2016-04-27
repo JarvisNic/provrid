@@ -1,7 +1,7 @@
 <%= form_for @activity do |f| %>
 
   <%= f.label :Nombre ,:style=>"width:11%;float:left;margin:0.3em ;"%>
-  <%= f.text_field :name ,:class=> "form-control nombre",:style=>"float:left;width:30%"%>
+  <%= f.text_field :name ,:class=> "form-control nombre",:style=>"float:left;width:30%" %>
   
 
    <div class="field">
@@ -10,14 +10,14 @@
   </div><br><br><br>
 
 <div class="field">
-    <%= f.label :Descrición,:style=>"width:11%;float:left;margin:0.3em ;", class: "descripcion" %>
+    <%= f.label :Descrición,:style=>"width:11%;float:left;margin:0.3em ;", class: "descripcion"  %>
     <%= f.text_area :description ,:class=> "form-control desc",:style=>"float:left;width:72%"%>
   </div>
   <br><br><br>
  <hr>
 
  <div class="actions" >
-    <%= f.submit "Insertar",class: "btn btn-primary btn-lg boton",style: "margin:0 5em;",:onclick => "return validacion()"%>
+    <%= f.submit "Insertar",class: "btn btn-primary btn-lg boton",style: "margin:0 5em;",:onclick => "return validacionact()"%>
   </div><br> 
 
  <div class="field" style="display:none;">

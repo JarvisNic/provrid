@@ -29,7 +29,7 @@ class WorksController < ApplicationController
 
     respond_to do |format|
       if @work.save
-        format.html { redirect_to @work, notice: 'Tarea Creado sastifactoriamente' }
+        format.html { redirect_to works_path, notice: 'Tarea Creado sastifactoriamente' }
         format.json { render :show, status: :created, location: @work }
       else
         format.html { render :new }
