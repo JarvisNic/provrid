@@ -8,16 +8,16 @@
 <% c.projects.each do |p| %>
 
 <% p.reports.each do |m| %>
-<table class = "table table-hover" style="width:9%;position:absolute" >
+<table class = "table table-hover" >
 <thead>
     <tr>
-      <th class = "col-md-2 col-lg-2" style="width:30px;">Nombre</th>
-      <th class = "col-md-2 col-lg-2" style="width:30px;">Objetivo</th>
-      <th class = "col-md-2 col-lg-2" style="width:30px;">Descripción</th>
-      <th class = "col-md-2 col-lg-2" style="width:30px;">Fecha Inicio</th>
-      <th class = "col-md-2 col-lg-2" style="width:30px;">Fecha Fin</th>
-      <th class = "col-md-2 col-lg-2" style="width:30px;">Actividades</th>
-      <th colspan="3"></th>
+      <th style="max-width:30px;">Nombre</th>
+      <th style="max-width:30px;">Objetivo</th>
+      <th style="max-width:30px;">Descripción</th>
+      <th style="max-width:40px;">Fecha Inicio</th>
+      <th style="max-width:30px;">Fecha Fin</th>
+      <th style="max-width:30px;">Actividades</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
   
@@ -26,19 +26,22 @@
      <%end%></a></li>
 </ol>
 <% m.works.each do |n| %>
-        <td style="width:20%"><%= n.name %></td>
-        <td style="width:20%"><%= n.objetive %></td>
-        <td style="width:20%"><%= n.descripcion %></td>
-        <td style="width:20%"><%= n.fecha_inicio %></td>
-        <td style="width:20%"><%= n.fecha_fin %></td>
-        <td style="width:20%"><% n.activities.each do |q| %><%= link_to q.name, q %><br><%end %></td>
-        <td style="width:20%"><%= link_to new_activity_path(:id_tarea => n.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
+<tbody>
+  <tr>
+        <td style="max-width:30px;overflow:hidden;"><%= n.name %></td>
+        <td style="max-width:30px;overflow:hidden;"><%= n.objetive %></td>
+        <td style="max-width:30px;overflow:hidden;"><%= n.descripcion %></td>
+        <td style="max-width:30px;overflow:hidden;"><%= n.fecha_inicio %></td>
+        <td style="max-width:30px;overflow:hidden;"><%= n.fecha_fin %></td>
+        <td style="max-width:30px;overflow:hidden;"><% n.activities.each do |q| %><%= link_to q.name, q %><br><%end %></td>
+        <td style="max-width:30px;"><%= link_to new_activity_path(:id_tarea => n.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
         <%end%>
         <%= link_to work_path(n),{:title=> "Editar Tarea"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i>
         <%end%>
         <%= link_to n, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"",:title=>"Eliminar Tarea" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
         <%end%>
         </td>
+ </tr>
 </tbody>
 <%end%>
 

@@ -32,7 +32,7 @@ class WorksController < ApplicationController
         format.html { redirect_to works_path, notice: 'Tarea Creado sastifactoriamente' }
         format.json { render :show, status: :created, location: @work }
       else
-        format.html { render :new }
+        format.html { redirect_to works_path, notice: 'Algo Salió mal' }
         format.json { render json: @work.errors, status: :unprocessable_entity }
       end
     end

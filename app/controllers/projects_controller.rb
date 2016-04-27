@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Proyecto creado sastifactoriamente' }
+        format.html { redirect_to projects_path, notice: 'Proyecto creado sastifactoriamente' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
