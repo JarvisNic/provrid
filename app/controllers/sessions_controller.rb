@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
 
   def index
     @cordinator = Cordinator.all.order('name ASC')
-    @cordinator = Cordinator.search(params[:search]).page(params[:page]).per(2)
-    @proyects = Project.all
+    @cordinator = Cordinator.search(params[:search]).page(params[:page]).per(3)
+    @proyects = Project.all.search(params[:search]).page(params[:page]).per(3)
+
 
   end
 
