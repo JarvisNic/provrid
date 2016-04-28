@@ -4,8 +4,8 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
-    @activity  = Activity.search(params[:search]).order('name ASC').page(params[:page]).per(4)
+    cc = Activity.for_activities(current_user.cordinator.id)
+    @activity = cc.search(params[:search]).page(params[:page]).per(4)
   end
 
   # GET /activities/1
