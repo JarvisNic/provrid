@@ -20,13 +20,8 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-<<<<<<< HEAD
-  username: denis  
-  password: dasdfasdf
-=======
   username: jarvis  
-  password: dasdf123
->>>>>>> 392a526f6fe808ceef1d9786a190ef5a8bf09981
+  password: 123456
 
 development:
   <<: *default

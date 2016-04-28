@@ -16,16 +16,17 @@
 <div class="jumbotron" style="margin:auto;">
   <h1>Bienvenido</h1>
   <p>Mostrando proyectos por coordinador</p>
-  <%= form_tag sessions_path, :method => "get" do %>
-<div class="input-group" style="padding: 5px;">
+  
+
+ <% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
+ <%= form_tag projects_path, :method => "get" do %>
+<div class="input-group col-md-4" style="position: absolute; padding: 5px;float:right; top: 440px; left: 690px">
       <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre del Cordinador"%>
     <span class="input-group-btn">
         <button class="btn btn-default" type="button">Buscar!</button>
       </span>
     </div>
     <% end %>
-
- <% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
 
   <% @cordinator.each do |c|%>
   <ol class="breadcrumb" style="background-color:#2E2E2E;color:#fff;">
