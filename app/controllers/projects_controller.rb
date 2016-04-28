@@ -6,12 +6,12 @@ class ProjectsController < ApplicationController
   def index
         c = current_user.cordinator
      if current_user.typeuser = 1
-      @projects = Project.all.order('name ASC').page(params[:page]).per(3)
-    
+      @projects = Project.search(params[:search]).order('name ASC').page(params[:page]).per(3)
+      
      else
       
     @projects = Project.all.where(:id => c.projects)
-      @projects = Project.order('name ASC').page(params[:page]).per(3)
+      @projects = Project.search(params[:search]).order('name ASC').page(params[:page]).per(3)
     end
   end
   def dataas

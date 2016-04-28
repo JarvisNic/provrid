@@ -1,8 +1,16 @@
 
 <% if current_user %>
-
-<h1 style="float:left">Mostrando las Tareas para <%= current_user.cordinator.name %>
+<%paginate(@work)%>
+<h1 style="float:left">Mostrando las Tareas para <%= current_user.cordinator.name %> 
 </h1><br><br><br><br>
+<%= form_tag works_path, :method => "get" do %>
+<div class="input-group" style="padding: 5px;">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre de la Tarea"%>
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Buscar!</button>
+      </span>
+    </div>
+    <% end %>
 
 <% c = current_user.cordinator %>
 <% c.projects.each do |p| %>
@@ -52,7 +60,7 @@
   
 
 
-<%paginate(@cordinator)%>
+
 <br>
 
   <% else %>

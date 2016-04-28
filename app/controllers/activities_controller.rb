@@ -4,8 +4,8 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all.order('name ASC').page(params[:page]).per(4)
-
+    @activities = Activity.all
+    @activity  = Activity.search(params[:search]).order('name ASC').page(params[:page]).per(4)
   end
 
   # GET /activities/1

@@ -21,7 +21,7 @@
         <td><%= cordinator.name %></td>
         <td><%= cordinator.address %></td>
         <td><%= cordinator.phone %></td>
-        <td><%= cordinator.facultad.present? %></td>
+        <td><%= cordinator.facultad_id.present? %></td>
         <td><%= link_to 'Show', cordinator %></td>
         <td><%= link_to 'Edit', edit_cordinator_path(cordinator) %></td>
         <td><%= link_to 'Destroy', cordinator, method: :delete, data: { confirm: 'Are you sure?' } %></td>

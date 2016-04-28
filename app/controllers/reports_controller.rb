@@ -4,9 +4,9 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
-  end
-
+      @reports = Report.search(params[:search]).order('name ASC').page(params[:page]).per(3)
+  
+end
   # GET /reports/1
   # GET /reports/1.json
   def show
