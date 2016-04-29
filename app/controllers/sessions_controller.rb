@@ -6,8 +6,6 @@ class SessionsController < ApplicationController
     @cordinator = Cordinator.all.order('name ASC')
     @cordinator = Cordinator.search(params[:search]).page(params[:page]).per(3)
     @proyects = Project.all.search(params[:search]).page(params[:page]).per(3)
-
-
   end
 
 
@@ -17,7 +15,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: 'Sesión Iniciada con éxito'
     else
-      render :index
+      redirect_to root_url, alert: 'Usted no esta registrado'
     end
   end
   

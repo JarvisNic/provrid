@@ -82,7 +82,7 @@ function validapro() {
      $(".objepo").focus().after("<span class='error' style='right:2px;'>El mínimo de caractéres es de 30</span>");
    return false;
   }
-  else if( !$('.objepo').val().match(re) )
+  else if( !($('.objepo').val().match(re)) )
   {
      $(".error").delay(200).fadeOut(300);
      $(".objepo").focus().after("<span class='error'>Formato Incorrecto</span>");
@@ -94,7 +94,7 @@ function validapro() {
  $(".objw").focus().after("<span class='error'>El mínimo de caractéres es de 30</span>");
     return false;
  }
- else if(!$('.objw').val().match(re))
+ else if(!($('.objw').val().match(re)))
  {
    $(".error").delay(200).fadeOut(300);
      $(".objw").focus().after("<span class='error'>Formato Incorrecto</span>");

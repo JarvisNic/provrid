@@ -1,4 +1,5 @@
 
+
 function inserta_fase(){
    $("#boton_fase").click(function(){
 	var legajo = $("#status").val();

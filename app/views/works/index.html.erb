@@ -1,6 +1,6 @@
 
 <% if current_user %>
-<%paginate(@work)%>
+
 <h1 style="float:left">Mostrando las Tareas para <%= current_user.cordinator.name %> 
 </h1>
 
@@ -62,7 +62,7 @@
 <%end%>
   
 
-
+<%=paginate(@work)%>
 
 <br>
 

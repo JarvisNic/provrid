@@ -1,13 +1,18 @@
 <%= form_for (@project) do |f| %>
-  </br></br></br>
   <div class="field">
-    </div></br></br></br></br>
+    </div></br>
+  <div class="field">
+  <%= f.label :Nombre_Proyecto ,:style=>"width:11%;float:left;margin:0.3em ;" %>
+  <%= f.text_field :name, :class => 'form-control nampo' ,:style=>"float:left;width:30%" , :placeholder => "El nombre del  proyecto debe tener 10 caracteres" %>
+    </div></br></br></br>
+
+    <div class="field">
+   <%= f.label :Objetivo_proyecto ,:style=>"width:11%;float:left;margin:0.2em ;"%>
+   <%= f.text_area :objetive, :class => 'form-control objepo' ,:style=>"float:left;width:62%" , :placeholder => "El objetivo del Proyecto debe terner  "%>
+    </div></br>
+
   
-  <div class="field">
-    <%= f.label :Estado ,:style=>"width:11%;float:left;margin:0.2em ; "%>
-   <%= f.select :status ,[['En proceso',2], ['Finalizado',3]], {},{:class => "form-control",:style=>"float:left;width:30%" }%>
-  </div></br></br></br>
-  <div class="field">
+  </br></br></br>
 
     <div class="field">
   <%= f.label :tiempo ,:style=>"width:11%;float:left;margin:0.2em ;" %>
@@ -26,7 +31,6 @@
   </div></br></br>
    <hr>
    <div class="field" style="display:none;">
-   <div class="field" style="display;none">
     <%= f.text_field :cordinator_id,:value=> params[:id_cordi] %>
   </div>
   

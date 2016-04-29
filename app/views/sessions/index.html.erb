@@ -1,16 +1,6 @@
 <% if current_user %>
- <% data = [] %>
-  <% c = current_user.cordinator %>
-  <% c.projects.each do |m| %>
-  <% m.reports.each do |f| %>
-  <% f.works.each do |b| %>
-  <% b.activities.each do |a| %>
-  <% data.push(a) %>
-  <% end %>
-  <% end %>
-  <% end %>
-  <% end %>
 
+<!--%= line_chart @proyects.group(:name).count(:created_at) %>-->
     <%= pie_chart Activity.group("activities.status").joins(work: [{ report: :project }]).sum(:status) %>
   
 <div class="jumbotron" style="margin:auto;">
@@ -20,7 +10,7 @@
 
  <% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
  <%= form_tag projects_path, :method => "get" do %>
-<div class="input-group col-md-4" style="position: absolute; padding: 5px;float:right; top: 440px; left: 690px">
+<div class="input-group col-md-4" style="position: absolute; padding: 5px;float:right; top: 470px; left: 690px">
       <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre del Cordinador"%>
     <span class="input-group-btn">
         <button class="btn btn-default" type="button">Buscar!</button>
@@ -105,8 +95,7 @@
 <% end %>
 <%= paginate(@cordinator) %>
 <% else %>
-<div class="col-md-6">
+
 <%= render 'new' %>
-</div>
 
 <% end %>

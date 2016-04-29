@@ -22,19 +22,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">VRID-UNI</a>
+      <%= link_to "VRID-UNI", root_path, class: "navbar-brand" %>
     </div>
 
     <% if current_user  %>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Inicio", root_path %></li>
+        <li><%= link_to "Inicio", root_path,class: "active" %></li>
     <% else %>
 <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Iniciar Sesión", root_path %></li>
         <% end %>
         <% if current_user  %>
         <% case current_user.typeuser.to_i  %>
@@ -65,15 +64,18 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </div>
+<script type="text/javascript">
+  $('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');
+</script>
 
-
-<div class="container">
+<div class="container" style="z-index:2">
 <% if notice %>
-    <p style ="margin: 0.5em;" class="alert alert-success alert-dismissible"><%= notice %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+    <p style ="margin: 0.5em;z-index:1;position:absolute;" class="alert alert-success alert-dismissible",><%= notice %><button style="z-index:3;" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="z-index:4">&times;</span></button></p>
   <% end %>
   <% if alert %>
-    <p style ="margin: 0.5em;" class="alert alert-danger alert-dismissible"><%= alert %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+    <p style ="margin: 0.5em;z-index:1;position:absolute;" class="alert alert-danger alert-dismissible",><%= alert %><button style="z-index:3;" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="z-index:4">&times;</span></button></p>
   <% end %>
+  <br>
 
 
 

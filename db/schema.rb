@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(version: 20160427200923) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
-    t.string   "objetive"
-    t.string   "time"
+    t.text     "objetive"
     t.string   "status"
     t.string   "fase"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "cordinator_id"
+    t.integer  "time"
   end
 
   create_table "reports", force: :cascade do |t|
