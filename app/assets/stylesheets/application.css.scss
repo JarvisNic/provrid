@@ -130,7 +130,7 @@
 /*/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/*/
 
 body{
- 	margin: 0;
+ 	margin: 4em 0;
 	padding: 0;
 	background: #fff;
 	background-image: url(http://gfxzone.net/wp-content/uploads/2014/06/main-background1.jpg);
@@ -181,4 +181,12 @@ hr {border: 0; height: 2px; text-align: center; background-image: linear-gradien
 	margin-left: 16px;
 	margin-top: 10px;
 	position: absolute;
+}
+.panel-default > .panel-heading {
+    color: #585858;
+	background-color: #090909;
+    border-color: #090909;
+}
+.panel-title{
+	color: #F2F2F2;
 }

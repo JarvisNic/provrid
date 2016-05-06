@@ -1,5 +1,5 @@
 //definiendo variable de expresion regular de solo letras
-var re = /^([a-zA-Z\s])*$/
+var re = /^([a-z\s\SA-Z])*$/
 //termina de definir expresion regular de solo letras 
 
 function validacionact() {
@@ -88,18 +88,17 @@ function validapro() {
      $(".objepo").focus().after("<span class='error'>Formato Incorrecto</span>");
      return false;
   }
- else if  ( $('.objw').val().length < 30 ) 
+ else if  ( $('.timep').val() < 1 ) 
  {
    $(".error").delay(200).fadeOut(300);
- $(".objw").focus().after("<span class='error'>El mínimo de caractéres es de 30</span>");
+ $(".timep").focus().after("<span class='error'>Número Inválido</span>");
     return false;
  }
- else if(!($('.objw').val().match(re)))
+ else if  ( $('.fasepo').val() < 1 ) 
  {
    $(".error").delay(200).fadeOut(300);
-     $(".objw").focus().after("<span class='error'>Formato Incorrecto</span>");
-     return false;
- 
+ $(".fasepo").focus().after("<span class='error'>Número Inválido</span>");
+    return false;
  }
   // Si el script ha llegado a este punto, todas las condiciones
   // se han cumplido, por lo que se devuelve el valor true

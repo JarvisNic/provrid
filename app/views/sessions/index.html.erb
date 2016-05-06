@@ -1,14 +1,89 @@
 <% if current_user %>
 
 <!--%= line_chart @proyects.group(:name).count(:created_at) %>-->
-    <%= pie_chart Activity.group("activities.status").joins(work: [{ report: :project }]).sum(:status) %>
-  
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 <div class="jumbotron" style="margin:auto;">
   <h1>Bienvenido</h1>
   <p>Mostrando proyectos por coordinador</p>
-  
+  <script type="text/javascript" charset="utf-8">
 
+$(function () {
+    $('#charcont').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Mostrando Estado de Proyectos por Cordinador'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [ <% @cordinator.each do |name|%>
+            "<%= name. name%>", <%end%>
+            ],
+           title: { text: 'Cordinadores'}
+        },
+        yAxis: {
+            
+            title: {
+                text: 'Tiempo en Meses',
+               
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -20,
+            y: 20,
+            floating: false,
+            borderWidth: 2,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series:
+         [    
+        {   
+              name: 'Proyectos' ,
+              data: [ <% @cordinator.each do |c| %>  <%=c.projects.count %>,<%end%>]
+        } , {
+              name: 'Reportes' ,
+              data: [ <% @cordinator.each do |c| %> <%= Report.select("reports.*").joins("inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id ").where("cordinators.id = :name", { name: c.id}).count %>, <%end%>]
+        }, {
+              name: 'Tareas' , 
+              data: [ <% @cordinator.each do |c| %> <%= Work.select("works.*").joins("inner join reports on reports.id = works.report_id inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id ").where("cordinators.id = :name", { name: c.id}).count %>, <%end%>]
+        }, {
+              name: 'Actividades',
+              data: [<% @cordinator.each do |c| %> <%= Activity.select("activities.*").joins("inner join works on works.id = activities.work_id inner join reports on reports.id = works.report_id inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id " ).where("cordinators.id = :name", { name: c.id}).count %>, <%end%>]
+          }]
+    });
+});
+
+</script>
+<!--
+[ <% @cordinator.each do |c| %> <% c.projects.each do |p|%> <%= p.reports.count('DISTINCT reports.project_id') %>,<%end%><%end%>]
+
+select("activities.*").distinct.joins("inner join works on works.id = activities.work_id inner join reports on reports.id = works.report_id inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id ").where("cordinators.id = :name", { name: coridnator})
+-->
  <% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
+ <div id="charcont" style=""></div>
+
  <%= form_tag projects_path, :method => "get" do %>
 <div class="input-group col-md-4" style="position: absolute; padding: 5px;float:right; top: 470px; left: 690px">
       <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre del Cordinador"%>

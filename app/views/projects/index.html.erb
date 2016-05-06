@@ -1,83 +1,66 @@
 
-<%if current_user %>
 <% c = current_user %>
 
-<h1 style="float:left">Mostrando Proyectos</h1>
-<br><br><br><br>
-<%= form_tag projects_path, :method => "get" do %>
-<div class="input-group" style="padding: 5px;">
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre del proyecto"%>
+ <% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
+<div class="jumbotron" style="margin:auto;">
+  <h2>Mostrando Proyectos</h2>
+  <p>para </p>
+
+ <%= form_tag projects_path, :method => "get" do %>
+<div class="input-group col-md-4" style="position: absolute; padding: 5px;float:right; top: 5em; left: 690px">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre del proyecto",:autofocus=>"true"%>
     <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Buscar!</button>
+        <%= submit_tag "Buscar" , class: "btn btn-default" , name: nil %>
       </span>
     </div>
     <% end %>
 
-<%= bar_chart Project.group(:name).sum(:cordinator_id) %>
-<div class="col-lg-2 col-md-2 col-sm-2"><strong>Name</strong></div>
-<div class="col-lg-2 col-md-2 col-sm-2"><strong>Objetive</strong></div>
-<div class="col-lg-2 col-md-2 col-sm-2"><strong>Coordinador</strong></div>
-<div class="col-lg-1 col-md-1 col-sm-1"><strong>Time</strong></div>
-<div class="col-lg-1 col-md-1 col-sm-1"><strong>Status</strong></div>
-<div class="col-lg-1 col-md-1 col-sm-1"><strong>Fase</strong></div>
-<div class="col-lg-2 col-md-2 col-sm-2"><strong></strong></div>
-<div class="col-lg-2 col-md-2 col-sm-2"><strong></strong></div>
-<hr style="position:relative;left:-100px;width:120%;">
-<% a = 1 %>
-<% @projects.each do |project| %>
-<div class="panel-group" role="tablist"> 
-  <div class="panel panel-default"> 
-    <div class="panel-heading" role="tab" id="collapseListGroupHeading1"> 
-      <h4 class="panel-title">
-       <div class="col-lg-2 col-md-2 col-sm-2"><a class="" role="button" data-toggle="collapse" href="#collapseListGroup<%=a%>" aria-expanded="true" aria-controls="collapseListGroup1"><%= project.name %></a></div>
-       <div class="col-lg-2 col-md-2 col-sm-2"><a class="" role="button" data-toggle="collapse" href="#collapseListGroup<%=a%>" aria-expanded="true" aria-controls="collapseListGroup1"><%= project.objetive %></a></div>
-        <div class="col-lg-2 col-md-2 col-sm-2"><a class="" role="button" data-toggle="collapse" href="#collapseListGroup<%=a%>" aria-expanded="true" aria-controls="collapseListGroup1"><%= project.cordinators %></a></div>
-       <div class="col-lg-1 col-md-1 col-sm-1"><a class="" role="button" data-toggle="collapse" href="#collapseListGroup<%=a%>" aria-expanded="true" aria-controls="collapseListGroup1"><%= project.time %></a></div>
-       <div class="col-lg-1 col-md-1 col-sm-1"><a class="" role="button" data-toggle="collapse" href="#collapseListGroup<%=a%>" aria-expanded="true" aria-controls="collapseListGroup1"><%= project.status %></a></div>
-       <div class="col-lg-1 col-md-1 col-sm-1"><a class="" role="button" data-toggle="collapse" href="#collapseListGroup<%=a%>" aria-expanded="true" aria-controls="collapseListGroup1"><%= project.fase %></a></div>
-       </h4> <span style="display:inline-block; width: 70px;"></span>
-       <% case c.typeuser.to_i  %>
-        <% when 1 %>
-        <%= link_to  project,:style=>"" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-eye-open"></i><%end%>
-        <%= link_to  edit_project_path(project),:style=>"" do%><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i><%end%>
-        <%= link_to project, method: :delete, data: { confirm: 'Estas seguro?' },:style=>"" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i><%end%>
-         <% when 2 %>
-        <%= link_to  project,:style=>"" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-eye-open"></i><%end%>
-        <%= link_to  edit_project_path(project),:style=>"float:right;" do%><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i><%end%>
-        <%= link_to project, method: :delete, data: { confirm: 'Estas seguro?' },:style=>"float:right" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i><%end%>
-        <% end %>
-       </div> 
-        
-        <div id="collapseListGroup<%=a%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="true" style="height:auto;"> 
-         <ul class="list-group" style="margin:0px;"> 
-         <% project.reports.each do |p| %>
-       <li class="list-group-item"><div style="width:80%;float:left;">
-          <%=p.name %><span style="display:inline-block; width: 150px;"></span>
-          <%=p.date %><span style="display:inline-block; width: 80px;"></span>
-          <%=p.desc %></div>
-          <%= link_to  p,:style=>"" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-eye-open"></i><%end%>
-        <%= link_to  edit_report_path(p),:style=>"" do%><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i><%end%>
-        <%= link_to p, method: :delete, data: { confirm: 'Estas seguro?' },:style=>"" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i><%end%>
-       </li> 
-       <%end%>
-       </ul> 
-       <% a = a + 1 %> 
-     </div> 
-   </div> 
- </div>
-    <% end %>
-<%= paginate(@projects) %>
+  <% @cor.each do |c|%>
+  <ol class="breadcrumb" style="background-color:#2E2E2E;color:#fff;">
+  <li style="width:95%;margin:auto;"><%= c.name  %><div style ="float:right;width:2em;"><%= link_to new_project_path(:id_cordi => c.id), {:title=>"Nuevo Proyecto"},{} do %><i class="btn btn-primary btn-sm glyphicon glyphicon glyphicon glyphicon-folder-open"></i></div>  
+     <%end%></li>
+
+</ol>
+  <table class="table table-hover">
+<thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Objetivo</th>
+      <th>Tiempo</th>
+      <th>Estado</th>
+      <th>Fase</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>  
+
+  <% c.projects.each do |proje| %>
+
+
+  <tbody>
+   <td><%= link_to proje.name, proje %></td>
+   <td><%= proje.objetive %></td>
+   <td><%= proje.time %></td>
+   <td><%= proje.status %></td>
+   <td><%= proje.fase %></td>
+   <td><%= proje.cordinators %></td>
+   <td class="col-md-2">
+
+   <%= link_to "",new_report_path(:id_project=>proje.id,:name=>proje.name),class: "btn glyphicon glyphicon-plus",:style=>"float:left",:title=>"Asignar Reporte"%>
+   <%=  link_to "",edit_project_path(proje,:id_cordi=>c.id) , class: "btn btn-sm glyphicon glyphicon glyphicon-pencil",:style=>"float:left",:title=>"Editar Proyecto" %>
+    <%=  link_to "",project_path(proje), :method=>"delete", data: { confirm: 'Estas seguro?' }  , class: "btn  glyphicon glyphicon glyphicon-remove",:style=>"float:left",:title=>"Eliminar Poryecto" %>
+     </td>
+     
+<% end%>
+</tbody>
+</table>
+
+
+<% end %>
+ <%  else %>
+ 
+<h1>Acceso Denegado :)</h1>
+<% end %>
+<%= paginate(@cor) %>
 
 
 <br>
-
-
-<%else%>
-<p>Acceso Denegado comuniquese con su administrador de servicios</p>
-<script>
-
-$(document).ready(function() {
-    $('#myCarousel').carousel();
-  });
-</script>
-<% end %>

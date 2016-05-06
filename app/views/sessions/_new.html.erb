@@ -9,7 +9,7 @@
 			<div>VRID-<span>UNI</span></div>
 		</div>
 		<div class="login">
-		<%= text_field_tag :email ,"", class: 'user',:placeholder=>"Correo Electrónico" %><br>
+		<%= text_field_tag :email ,"", class: 'user',:placeholder=>"Correo Electrónico",:autofocus=>"true" %><br>
 		<%= password_field_tag :password ,"", class: "passwd",:placeholder=>"Contraseña" %><br>
   <div class="actions">
     <%= submit_tag "Entrar", class: "logger" %>

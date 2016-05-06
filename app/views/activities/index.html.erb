@@ -1,23 +1,22 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Mostrando Actividades para <%=current_user.cordinator.name%></h1>
+<div class="jumbotron">
+<h2 style="float:left">Mostrando Actividades para <%=current_user.cordinator.name%></h2>
+
 <%= form_tag activities_path, :method => "get" do %>
-<div class="input-group" style="padding: 5px;">
-      <%= text_field_tag :search, params[:search], class: "form-control col-md-4", placeholder: "Nombre de la actividad"%>
+<div class="input-group col-md-4" style="padding: 5px; float:right;">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre de la actividad",:autofocus=>"true"%>
     <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Buscar!</button>
+        <%= submit_tag "Buscar" , class: "btn btn-default" , name: nil %>
       </span>
     </div>
     <% end %>
 
-<% c = current_user.cordinator.projects.each do |c|%>
-  <% c.reports.each do |m| %>
-<% m.works.each do |i| %>
+<br><br><br><br><br>
 <% @activity.each do |activity| %>
 <div class="col-md-4">
 <div class="panel panel-default">
   <div class="panel-heading">
-      <h3 class="panel-title"> <%= activity.name %></h3>
+      <h3 class="panel-title"> <%= link_to activity.name, activity %><%= link_to "",activity, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"",:title=>"Eliminar Tarea",:class=>"btn glyphicon glyphicon-remove",:style=>"margin:2px 4px;padding:0;float:right" %></h3>
   </div>
   <div class="panel-body">
     <%= activity.name %><%= link_to edit_activity_path(activity) ,:id=>"boton_fase",style: 'float:right;'   do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
@@ -32,8 +31,8 @@
   </div>
 </div>
 </div>
-<%paginate(@activity)%>
 <% end%>
-<% end%>
-<% end%>
-<% end%>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div style="width:900px;">
+<%=paginate(@activity)%>
+</div>

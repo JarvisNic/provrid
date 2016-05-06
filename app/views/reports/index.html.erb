@@ -1,57 +1,53 @@
 
 <% if current_user %>
-<h1 style="float:left">Mostrando los reportes para <%= current_user.cordinator.name %>
-</h1> 
+<div class="jumbotron" style="margin:auto;">
+<h2 style="float:left">Mostrando los reportes para <%= current_user.cordinator.name %>
+</h2> 
 <%= form_tag reports_path, :method => "get" do %>
-<div class="input-group" style="padding: 5px;">
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre del reporte"%>
+<div class="input-group col-md-4" style="padding: 5px; float:right;">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre del reporte",:autofocus=>"true"%>
     <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Buscar!</button>
+        <%= submit_tag "Buscar" , class: "btn btn-default" , name: nil %>
       </span>
     </div>
     <% end %>
 
 
-<% c = current_user.cordinator %>
-     <% c.projects.each do |m| %>
+
 <table class="table table-hover"><br><br><br><br>
 <thead>
     <tr>
       <th>Nombre</th>
-      <th>Fecha</th>
+      <th>Proyecto</th>
       <th>Descripción</th>
+      <th>Fecha</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     
-    <ol class="breadcrumb" style="background-color:#2E2E2E;">
-  <li style="width:95%;margin:auto;"><a href="#"><%= m.name %><div style ="float:right;width:2em;"><%= link_to new_report_path(:id_project=>  m.id,:name=>m.name),{:title=>"Nuevo Reporte"},{} do %><i class="btn btn-default btn-sm glyphicon glyphicon-file"></i></div>  
-     <%end%></a></li>
-</ol>
-<% m.reports.each do |f| %>
+    
+<% @reports.each do |f| %>
       <tr>
-        <td><%= f.name %></td>
-        <td><%= f.date %></td>
+        <td><%= link_to f.name, f %></td>
+        <td><%= link_to f.project.name,f.project %></td>
         <td><%= f.desc %></td>
-
+        <td><%= f.date.strftime("%x") %></td>
         <td>
-        <%= link_to new_work_path(:id_report => f.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
-        <%end%>
-        <%= link_to edit_report_path(f),{:title=> "Editar Reporte"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i>
-        <%end%>
-        <%= link_to f, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"",:title=>"Eliminar Reporte" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
-        <%end%>
+        <%= link_to "",new_report_path(:id_project=>f.project.id,:name=>f.project.name),:class=>"glyphicon glyphicon-file btn",:title=>"Asignar reporte"%>
+        <%= link_to "",new_work_path(:id_report => f.id,:name=>f.name),{:title=> "Asignar una tarea",:class=>"glyphicon glyphicon-plus btn",} %>
+        <%= link_to "",edit_report_path(f,:id_project=>f.project_id),{:title=> "Editar Reporte",class: "btn glyphicon glyphicon-pencil"} %>
+        <%= link_to "",f, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"",:title=>"Eliminar Reporte",class: "btn glyphicon glyphicon-remove" %>
 
         </td>
       </tr>
-    <% end %>
+      <%end%>
   </tbody>
 </table>
-<%end%>
 
 <%= paginate(@reports) %>
+</div>
 <br>
 
 <% else %>

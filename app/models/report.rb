@@ -7,7 +7,7 @@ class Report < ActiveRecord::Base
 
 def self.search(search)
 		if search.present?	
-			where(["name LIKE ?" ,"%#{search}%"])	
+			where(["reports.name LIKE ?" ,"%#{search}%"])	
 		else
 			all
 		end

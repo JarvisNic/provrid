@@ -4,9 +4,7 @@
 <br><br><br><br>
 <%= render 'form1' %>
 
-
-<%= link_to 'Atras', activities_path, :class=>"btn btn-primary btn-lg",:style=> "top:-65px;position:relative;"%>
-
+<a href="javascript:history.back()" class="btn btn-primary btn-lg" style="top:-65px;position:relative;">Atrás</a>
 <%else%>
 <h1>Acceso denegado :)</h1>
 <%= link_to 'atras', root_path, class: 'btn btn-primary btn-sm', :style => "float:left" %>

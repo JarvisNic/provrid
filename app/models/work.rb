@@ -4,7 +4,7 @@ class Work < ActiveRecord::Base
 
 def self.search(search)
 		if search.present?	
-			where(["name LIKE ?" ,"%#{search}%"])	
+			where(["works.name LIKE ?" ,"%#{search}%"])	
 		else
 			all
 		end

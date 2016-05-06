@@ -4,11 +4,11 @@
 
 <div class="field">
     <%= f.label :Nombre_reporte ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-    <%= f.text_field :name, :class => 'form-control nomre' ,:style=>"float:left;width:30%", :placeholder => "El reporte debe tener 10 caracteres" %>
+    <%= f.text_field :name, :class => 'form-control nomre' ,:style=>"float:left;width:30%", :placeholder => "El reporte debe tener 10 caracteres",:autofocus=>"true" %>
 </div>
   
   <div class="field">
-    <%= f.label :Fecha_Reporte ,:style=>"width:11%;float:left;margin:0.3em 0.5em; " %>
+    <%= f.label :Fecha_de_entrega,:style=>"width:11%;float:left;margin:0.3em 0.5em; " %>
     <%= f.date_select :date, {}, {:class=>'form-control date-control', :style=>'float:left;width: 10%;'}%> 
   </div><br><br><br>
   <div class="field">

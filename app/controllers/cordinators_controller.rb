@@ -1,6 +1,6 @@
 class CordinatorsController < ApplicationController
   before_action :set_cordinator, only: [:show, :edit, :update, :destroy]
-
+  before_filter :require_login
   # GET /cordinators
   # GET /cordinators.json
   def index

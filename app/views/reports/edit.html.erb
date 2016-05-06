@@ -1,11 +1,13 @@
 
-<% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %><h1>Editar reporte</h1>
+<% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
+<div class="jumbotron">
+<h2>Editar reporte</h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Atras', reports_path, :class=>"btn btn-primary btn-lg",:style=> "top:-45px;position:relative;" %>
+<a href="javascript:history.back()" class="btn btn-primary btn-lg" style="top:-45px;position:relative;">Atrás</a>
 
 <%else%>
 <h1>Acceso denegado :)</h1>
-<%= link_to 'Atras', root_path, class: 'btn btn-primary btn-sm', :style => "float:left" %>
+<%= link_to 'Atrás', root_path, class: 'btn btn-primary btn-sm', :style => "float:left" %>
 <% end %>

@@ -1,6 +1,6 @@
 class FacultadsController < ApplicationController
   before_action :set_facultad, only: [:show, :edit, :update, :destroy]
-
+  before_filter :require_login
   # GET /facultads
   # GET /facultads.json
   def index

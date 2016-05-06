@@ -1,17 +1,17 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  before_filter :require_login
   # GET /projects
   # GET /projects.json
   def index
         c = current_user.cordinator
-     if current_user.typeuser = 1
+     if current_user.typeuser == 1
       @projects = Project.search(params[:search]).order('name ASC').page(params[:page]).per(3)
-      
-     else
-      
-    @projects = Project.all.where(:id => c.projects)
-      @projects = Project.search(params[:search]).order('name ASC').page(params[:page]).per(3)
+      else
+    @cordinator = Project.search(params[:search]).page(params[:page]).per(3)
+    @cor = Cordinator.search(params[:search]).page(params[:page]).per(2)
+    #@projects = Project.all.where(:id => c.projects)
+    #@projects = Project.search(params[:search]).order('name ASC').page(params[:page]).per(3)
     end
   end
   def dataas

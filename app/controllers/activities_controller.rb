@@ -1,11 +1,11 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
-
+  before_filter :require_login
   # GET /activities
   # GET /activities.json
   def index
     cc = Activity.for_activities(current_user.cordinator.id)
-    @activity = cc.search(params[:search]).page(params[:page]).per(4)
+    @activity = Activity.search(params[:search]).page(params[:page]).per(6).joins("inner join works on works.id = activities.work_id inner join reports on reports.id = works.report_id inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id ").where("cordinators.name = :name", { name: current_user.cordinator.name}).distinct
   end
 
   # GET /activities/1

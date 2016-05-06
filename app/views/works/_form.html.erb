@@ -1,18 +1,17 @@
 <%= form_for(@work) do |f| %>
 
-<hr>
    
 <div class="field">
     <%= f.label :Nombre,:style=>"width:11%;float:left;margin:0.3em 0;" %>
-    <%= f.text_field :name ,:class=> "form-control namew",:style=>"float:left;width:30%" , :placeholder => "MI TAREA DEBE TENER 10 CARACTERES"%>
+    <%= f.text_field :name ,:class=> "form-control namew",:style=>"float:left;width:30%" , :placeholder => "Tarea debe tener 5 caracteres",:autofocus=>"true"%>
   </div><br><br><br>
   <div class="field">
     <%= f.label :descripcion,:style=>"width:11%;float:left;margin:0.3em 0;" %>
-    <%= f.text_area :descripcion,:class=> "form-control desc",:style=>"float:left;width:30%", :placeholder => "Descripción de MI TAREA debe ser de 30" %>
+    <%= f.text_area :descripcion,:class=> "form-control desc",:style=>"float:left;width:30%", :placeholder => "Descripción debe ser de 30 caracteres" %>
   </div>
   <div class="field">
     <%= f.label :Objetivo,:style=>"width:11%;float:left;margin:0.3em 1em;" %>
-    <%= f.text_area :objetive,:class=> "form-control objw",:style=>"float:left;width:35%" , :placeholder => "Objetivo de MI TAREA"%>
+    <%= f.text_area :objetive,:class=> "form-control objw",:style=>"float:left;width:35%" , :placeholder => "Objetivo debe ser de 30 caracteres"%>
   </div><br><br><br>
   
     <div class="field" style="display:none;">

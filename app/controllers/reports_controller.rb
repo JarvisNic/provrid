@@ -1,10 +1,11 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-
+  before_filter :require_login
   # GET /reports
   # GET /reports.json
   def index
-      @reports = Report.search(params[:search]).order('name ASC').page(params[:page]).per(3)
+
+      @reports = Report.search(params[:search]).order('project_id ASC').page(params[:page]).per(5).joins("inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id").where("cordinators.name = :name", { name: current_user.cordinator.name}).distinct
   
 end
   # GET /reports/1

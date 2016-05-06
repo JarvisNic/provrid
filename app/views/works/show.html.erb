@@ -1,34 +1,36 @@
-<p id="notice"><%= notice %></p>
-
+<div class="jumbotron">
 <p>
-  <strong>Name:</strong>
+  <strong class="col-md-2">Tarea </strong>
   <%= @work.name %>
 </p>
 
 <p>
-  <strong>Objetive:</strong>
+  <strong class="col-md-2">Objetive:</strong>
   <%= @work.objetive %>
 </p>
 
 <p>
-  <strong>Descripcion:</strong>
+  <strong class="col-md-2">Descripcion:</strong>
   <%= @work.descripcion %>
 </p>
 
 <p>
-  <strong>Fecha inicio:</strong>
+  <strong class="col-md-2">Fecha inicio:</strong>
   <%= @work.fecha_inicio %>
 </p>
 
 <p>
-  <strong>Fecha fin:</strong>
+  <strong class="col-md-2">Fecha fin:</strong>
   <%= @work.fecha_fin %>
 </p>
 
 <p>
-  <strong>Report:</strong>
-  <%= @work.report_id %>
+  <strong class="col-md-2">Report:</strong>
+  <%= link_to @work.report.name, @work.report %>
 </p>
 
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
+<a href="javascript:history.back()" class="btn btn-primary btn-lg" >Atrás</a>
+
+<%= link_to 'Editar', edit_work_path(@work,:id_report => @work.report.id,:name=>@work.report.name),class: "btn btn-primary btn-lg" %> 
+
+</div>

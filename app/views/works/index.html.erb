@@ -1,65 +1,57 @@
 
 <% if current_user %>
+<div class="jumbotron" style="margin:auto;">
+<h2 style="float:left">Mostrando las Tareas para <%= current_user.cordinator.name %> 
+</h2>
 
-<h1 style="float:left">Mostrando las Tareas para <%= current_user.cordinator.name %> 
-</h1>
-
-<br><br><br>
 <%= form_tag works_path, :method => "get" do %>
-<div class="input-group col-md-3" style="position: absolute; padding: 5px;float:right; top: 27px; left: 845px">
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre de la Tarea"%>
+<div class="input-group col-md-4" style="padding: 5px; float:right;">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre de la Tarea",:autofocus=>"true"%>
     <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Buscar!</button>
+        <%= submit_tag "Buscar" , class: "btn btn-default" , name: nil %>
       </span>
     </div>
-    <% end %><hr>
+    <% end %>
     
-
-<% c = current_user.cordinator %>
-<% c.projects.each do |p| %>
-
-<% p.reports.each do |m| %>
+<br><br><br><br>
 <table class = "table table-hover" >
 <thead>
     <tr>
-      <th style="max-width:30px;">Nombre</th>
-      <th style="max-width:30px;">Objetivo</th>
-      <th style="max-width:30px;">Descripción</th>
-      <th style="max-width:40px;">Fecha Inicio</th>
-      <th style="max-width:30px;">Fecha Fin</th>
-      <th style="max-width:30px;">Actividades</th>
-      <th colspan="1"></th>
+      <th class="col-md-2">Nombre</th>
+      <th class="col-md-2">Reporte</th>
+      <th class="col-md-2">Fecha Inicio</th>
+      <th class="col-md-2">Fecha Fin</th>
+      <th class="col-md-2">Actividades</th>
+      <th class="col-md-2"></th>
     </tr>
   </thead>
-  
-  <ol class="breadcrumb" style="background-color:#2E2E2E;">
-  <li style="width:90%;margin:auto;"><a href="#"><%= m.name %><div style ="float:right;width:2em;"><%= link_to new_work_path(:id_report=>  m.id,:name=>m.name),{:title=>"Nueva Tarea"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-ok"></i></div>  
-     <%end%></a></li>
-</ol>
-<% m.works.each do |n| %>
+
+<% @work.each do |n| %>
+
+
 <tbody>
   <tr>
-        <td style="max-width:30px;overflow:hidden;"><%= n.name %></td>
-        <td style="max-width:30px;overflow:hidden;"><%= n.objetive %></td>
-        <td style="max-width:30px;overflow:hidden;"><%= n.descripcion %></td>
+        <td style="max-width:30px;overflow:hidden;"><%= link_to n.name,n %></td>
+        <td style="max-width:30px;overflow:hidden;"><%= link_to n.report.name,n.report %></td>
         <td style="max-width:30px;overflow:hidden;"><%= n.fecha_inicio %></td>
         <td style="max-width:30px;overflow:hidden;"><%= n.fecha_fin %></td>
+        <% if n.activities.present? %>
         <td style="max-width:30px;overflow:hidden;"><% n.activities.each do |q| %><%= link_to q.name, q %><br><%end %></td>
-        <td style="max-width:30px;"><%= link_to new_activity_path(:id_tarea => n.id),{:title=> "Asignar actividad"} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
-        <%end%>
-        <%= link_to work_path(n),{:title=> "Editar Tarea"} do %><i class="btn btn-default btn-sm glyphicon glyphicon-pencil"></i>
-        <%end%>
-        <%= link_to n, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"",:title=>"Eliminar Tarea" do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
-        <%end%>
+        <% else %>
+        <td style="max-width:30px;overflow:hidden;">No existe actividad</td>
+        <% end %>
+        <td class="col-md-2">
+        <%= link_to "",new_work_path(:id_report => n.report.id,:name=>n.report.name),{:title=> "Asignar tarea",:class=>"glyphicon glyphicon-file btn",:style=>"margin:2px 4px;padding:0;"}  %>
+        <%= link_to "",new_activity_path(:id_tarea=>n.id,:name=>n.name),{:title=> "Asignar actividad",:class=>"glyphicon glyphicon-plus btn",:style=>"margin:2px 4px;padding:0;"}  %>
+        <%= link_to "", edit_work_path(n,:id_report => n.report.id,:name=>n.report.name),{:title=> "Editar Tarea",:class=>"btn glyphicon glyphicon-pencil",:style=>"margin:2px 4px;padding:0;"}  %>
+        <%= link_to "",n, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"",:title=>"Eliminar Tarea",:class=>"btn glyphicon glyphicon-remove",:style=>"margin:2px 4px;padding:0;" %>
         </td>
  </tr>
 </tbody>
 <%end%>
 
 
-<%end%>
 </table>
-<%end%>
   
 
 <%=paginate(@work)%>

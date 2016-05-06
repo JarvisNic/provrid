@@ -1,21 +1,28 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
-<p>
-  <strong>Objetive:</strong>
-  <%= @project.objetive %>
-</p>
-
-<p>
-  <strong><%= @project.reports.name%></strong>
-</p>
-
-<table>
-
+<div class="jumbotron">
+<br>
+<div class="col-md-12">
+  <p> <%= @project.name %></p>
+</div>
+<div class="col-md-12">
+    <p>Objetivo <%= @project.objetive %></p>
+</div>
+<div class="col-md-3">
+    <p>Duración 
+  <%= @project.time %> Meses</p>
+</div>
+<div class="col-md-3">
+    <p>Estado:
+  <%= @project.status %></p>
+</div>
+<div class="col-md-3">
+    <p>Fase:
+  <%= @project.fase %></p>
+</div>
+<div class="col-md-3">
+    <p>Coordinador <%=  %></p>
+    </div>
+  <table class="table">
 <thead>
     <tr>
       <th>Name</th>
@@ -41,23 +48,8 @@
       </tr>
     <% end %>
   </tbody>
-<p>
-  <strong>Time:</strong>
-  <%= @project.time %>
-</p>
+</table>
+<a href="javascript:history.back()" class="btn btn-primary btn-lg" >Atrás</a>
+<%= link_to 'Editar', edit_project_path(@project,:id_cordi=>@project.cordinator_id),class: "btn btn-primary btn-lg" %> 
 
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
-
-<p>
-  <strong>Fase:</strong>
-  <%= @project.fase %>
-</p>
-<p>
-  <strong>Usuario</strong>
-  <%= User.name %>
-</p>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+</div>

@@ -1,9 +1,7 @@
 <%= form_for (@project) do |f| %>
   <div class="field">
-    </div></br>
-  <div class="field">
   <%= f.label :Nombre_Proyecto ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-  <%= f.text_field :name, :class => 'form-control nampo' ,:style=>"float:left;width:30%" , :placeholder => "El nombre del  proyecto debe tener 10 caracteres" %>
+  <%= f.text_field :name, :class => 'form-control nampo' ,:style=>"float:left;width:30%" , :placeholder => "El nombre del  proyecto debe tener 10 caracteres",:autofocus=>true %>
     </div></br></br></br>
 
     <div class="field">
@@ -15,8 +13,8 @@
   </br></br></br>
 
     <div class="field">
-  <%= f.label :tiempo ,:style=>"width:11%;float:left;margin:0.2em ;" %>
-  <%=  f.text_field :time,class: "form-control timep"  ,:style=>"float:left;width:15%"%>
+  <%= f.label :Duración_en_meses ,:style=>"width:11%;float:left;margin:0.2em ;" %>
+  <%=  f.number_field :time,class: "form-control timep"  ,:style=>"float:left;width:15%"%>
     </div>
 
     <div class="field">
@@ -27,7 +25,7 @@
 
 
     <%= f.label :fase ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-    <%= f.text_field :fase,class: "form-control fasepo",:style=>"float:left;width:10%" %>
+    <%= f.number_field :fase,class: "form-control fasepo",:style=>"float:left;width:10%" %>
   </div></br></br>
    <hr>
    <div class="field" style="display:none;">
@@ -38,4 +36,5 @@
     <%= f.submit "Insertar" ,class: "btn btn-primary btn-lg valipro",:style=>"margin:0 5em", :onclick => "return  validapro()"%>
   </div>
     </div>
+</div>
 <% end %>
