@@ -40,8 +40,27 @@
    <td><%= link_to proje.name, proje %></td>
    <td><%= proje.objetive %></td>
    <td><%= proje.time %></td>
-   <td><%= proje.status %></td>
-   <td><%= proje.fase %></td>
+   <td><% if proje.status == 1%>
+  En espera
+  <% end %>
+  <% if proje.status == 2 %>
+  Ejecutándose
+  <% end %>
+  <% if proje.status == 3 %>
+  Finalizado
+  <% end %></td>
+   <td><% if proje.fase == 1%>
+  Rec. datos
+  <% end %>
+  <% if proje.fase == 2 %>
+  Planificación
+  <% end %>
+  <% if proje.fase == 3 %>
+  Ejecución
+  <% end %>
+  <% if proje.fase == 4 %>
+  Implementación
+  <% end %></td>
    <td><%= proje.cordinators %></td>
    <td class="col-md-2">
 

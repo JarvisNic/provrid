@@ -1,0 +1,16 @@
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<%= form_tag password_resets_path, :method => :post do %>
+<div class="body"></div>
+
+		<div class="login">
+		<h3>Para recuperar su contraseña debemos enviar un mensaje con instrucciones a un correo alterno</h3>
+		<%= text_field_tag :email ,"", class: 'form-control userema',:placeholder=>"Correo Electrónico",:autofocus=>"false" %><br>
+  <div class="actions">
+    <%= submit_tag "Enviar ahora!!", class: "logger",:onclick => "return validareset()"%><br><br>
+
+   <a href="javascript:history.back()" class="btn btn-primary btn-sm" >¿Qué hago aquí?</a>
+</div>
+
+<%end%>

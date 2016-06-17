@@ -13,11 +13,28 @@
 </div>
 <div class="col-md-3">
     <p>Estado:
-  <%= @project.status %></p>
+  <% case @project.status.to_i %>
+  <% when 1 %>
+  En espera
+  <% when 2 %>
+  Ejecutándose
+  <% when 3 %>
+  Finalizado
+  <% end %>
+  </p>
 </div>
 <div class="col-md-3">
     <p>Fase:
-  <%= @project.fase %></p>
+  <% case @project.fase.to_i %>
+  <% when 1 %>
+  Planeamiento 
+  <% when 2 %>
+  Diseño 
+  <% when 3 %>
+  Ejecutándose
+  <% when 4 %>
+  Terminado
+  <% end %>
 </div>
 <div class="col-md-3">
     <p>Coordinador <%=  %></p>
@@ -25,31 +42,33 @@
   <table class="table">
 <thead>
     <tr>
-      <th>Name</th>
-      <th>Objetive</th>
-      <th>Coordinador</th>
-      <th>Time</th>
-      <th>Status</th>
-      <th>Fase</th>
-      <th>Reportes</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Fecha</th>
+      <th>Tarea</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @project.reports.each do |project| %>
       <tr>
-        <td><%= project.name %></td>
+        <td><%= link_to project.name, project %></td>
+        <td><%= project.desc %></td>
+        <td><%= project.date %></td>
+        <td>
         <% project.works.each do |p| %>
-        <td><%=  p.name %></td>
+        <%=  link_to p.name,p %><br>
         <%end%>
-        <td><%= link_to 'Ver', project %></td>
-        <td><%= link_to 'Actualizar', edit_project_path(project) %></td>
-        <td><%= link_to 'Eliminar', project, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+        </td>
+        <td><%= link_to '', edit_report_path(project,:id_project=>project.project_id),{:title=> "Editar Reporte",class: "btn glyphicon glyphicon-pencil"} %></td>
+        <td><%= link_to '', project, method: :delete, data: { confirm: 'Estas seguro?' } ,:style=>"",:title=>"Eliminar Reporte",class: "btn glyphicon glyphicon-remove"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <a href="javascript:history.back()" class="btn btn-primary btn-lg" >Atrás</a>
 <%= link_to 'Editar', edit_project_path(@project,:id_cordi=>@project.cordinator_id),class: "btn btn-primary btn-lg" %> 
+
+<p><%=link_to "(PDF)", projects_path(@project, :format => 'pdf') , class: "btn btn-primary-lg" %></p>
 
 </div>

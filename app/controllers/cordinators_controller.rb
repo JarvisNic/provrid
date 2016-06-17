@@ -5,8 +5,16 @@ class CordinatorsController < ApplicationController
   # GET /cordinators.json
   def index
     @cordinators = Cordinator.all.order('name ASC').page(params[:page]).per(3)
- 
-    
+  end
+  #get rerpote/cordi
+  def reporte_cordinador
+    output = ReporteCordinador.new(:page_size=>"letter").to_pdf
+    respond_to do |format|
+      format.html do
+        send_data output, :filename => 'productos.pdf',
+                        :type=>"aplication/pdf"
+        end
+    end
   end
 
   # GET /cordinators/1

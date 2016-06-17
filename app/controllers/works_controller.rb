@@ -7,7 +7,15 @@ class WorksController < ApplicationController
     #@works = Work.where(id = current_user.cordinator.projects.reports.works.id)
     @cordinator = Cordinator.all.order('name ASC').page(params[:page]).per(3)
     @work  = Work.search(params[:search]).order('report_id ASC').page(params[:page]).per(5).joins("inner join reports on works.report_id = reports.id   inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id").where("cordinators.name = :name", { name: current_user.cordinator.name}).distinct
-  end
+    
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "report", :layout => 'pdf.html.haml'
+      end
+    end
+        
+    end
 
   # GET /works/1
   # GET /works/1.json

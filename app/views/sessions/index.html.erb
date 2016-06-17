@@ -1,21 +1,21 @@
 <% if current_user %>
 
-<!--%= line_chart @proyects.group(:name).count(:created_at) %>-->
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
 
 <div class="jumbotron" style="margin:auto;">
   <h1>Bienvenido</h1>
-  <p>Mostrando proyectos por coordinador</p>
   <script type="text/javascript" charset="utf-8">
 
 $(function () {
     $('#charcont').highcharts({
         chart: {
-            type: 'bar'
+            type: 'bar',
+            width: 490,
+            height: 300
         },
         title: {
-            text: 'Mostrando Estado de Proyectos por Cordinador'
+            text: 'Mostrando totales por Cordinador'
         },
         subtitle: {
             text: ''
@@ -27,9 +27,10 @@ $(function () {
            title: { text: 'Cordinadores'}
         },
         yAxis: {
-            
+            min: 0,
             title: {
-                text: 'Tiempo en Meses',
+                text: 'VRID-UNI',
+                align: 'high'
                
             },
             labels: {
@@ -76,94 +77,305 @@ $(function () {
 });
 
 </script>
+
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+    // Set up the chart
+    var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container',
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                depth: 50,
+                viewDistance: 25
+            },
+            width: 490,
+            height: 300
+        },
+        title: {
+            text: 'Proyectos del <%=current_user.name%>'
+        },
+        subtitle: {
+            text: 'VRID-UNI'
+        },
+        xAxis:{
+            min: 0,
+            categories: [<% @cordinator.each do |c| %>  <%=c.projects.count %>,<%end%>]
+        },
+        yAxis:{
+          min: 0
+        },
+        plotOptions: {
+            column: {
+                depth: 25,
+                enableMouseTracking: true
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 80,
+            floating: false,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        series: [
+        {
+          name: 'Proyectos' ,
+          color: 'rgba(165,170,217,1)',
+          data: [<% @cordinator.each do |c| %>  <%=c.projects.count %>,<%end%>]
+        }]
+    });
+
+    function showValues() {
+        $('#alpha-value').html(chart.options.chart.options3d.alpha);
+        $('#beta-value').html(chart.options.chart.options3d.beta);
+        $('#depth-value').html(chart.options.chart.options3d.depth);
+    }
+
+    // Activate the sliders
+    $('#sliders input').on('input change', function () {
+        chart.options.chart.options3d[this.id] = this.value;
+        showValues();
+        chart.redraw(false);
+    });
+
+    showValues();
+});
+</script>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+
+    // Uncomment to style it like Apple Watch
+    /*
+    if (!Highcharts.theme) {
+        Highcharts.setOptions({
+            chart: {
+                backgroundColor: 'black'
+            },
+            colors: ['#F62366', '#9DFF02', '#0CCDD6'],
+            title: {
+                style: {
+                    color: 'silver'
+                }
+            },
+            tooltip: {
+                style: {
+                    color: 'silver'
+                }
+            }
+        });
+    }
+    // */
+
+    Highcharts.chart('gouge', {
+
+        chart: {
+            type: 'solidgauge',
+            marginTop: 30
+        },
+
+        title: {
+            text: 'Actividades',
+            style: {
+                fontSize: '24px'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 80,
+            floating: true ,
+            borderWidth: 1,
+            shadow: true
+        },
+
+        tooltip: {
+            borderWidth: 0,
+            backgroundColor: 'none',
+            shadow: false,
+            style: {
+                fontSize: '16px'
+            },
+            pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}%</span>',
+            positioner: function (labelWidth, labelHeight) {
+                return {
+                    x: 150 - labelWidth / 2,
+                    y: 100
+                };
+            }
+        },
+
+        pane: {
+            startAngle: 0,
+            endAngle: 360,
+            background: [{ // Track for Move
+                outerRadius: '112%',
+                innerRadius: '88%',
+                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.3).get(),
+                borderWidth: 0
+            }, { // Track for Exercise
+                outerRadius: '87%',
+                innerRadius: '63%',
+                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.3).get(),
+                borderWidth: 0
+            }, { // Track for Stand
+                outerRadius: '62%',
+                innerRadius: '38%',
+                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[2]).setOpacity(0.3).get(),
+                borderWidth: 0
+            }]
+        },
+
+        yAxis: {
+            min: 0,
+            max: 100,
+            lineWidth: 0,
+            tickPositions: []
+        },
+
+        plotOptions: {
+            solidgauge: {
+                borderWidth: '34px',
+                dataLabels: {
+                    enabled: false
+                },
+                linecap: 'round',
+                stickyTracking: false
+            }
+        },
+
+        series: [{
+            name: 'Actividades Finalizadas',
+            borderColor: Highcharts.getOptions().colors[0],
+            data: [{
+                color: Highcharts.getOptions().colors[1],
+                radius: '100%',
+                innerRadius: '100%',
+                y:  [<% @cordinator.each do |c| %> <%= Activity.select("activities.*").joins("inner join works on works.id = activities.work_id inner join reports on reports.id = works.report_id inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id " ).where("cordinators.id = :name", { name: c.id}).count %>, <%end%>
+            ],
+            }]
+        }, {
+            name: 'Exercise',
+            borderColor: Highcharts.getOptions().colors[1],
+            data: [{
+                color: Highcharts.getOptions().colors[1],
+                radius: '75%',
+                innerRadius: '75%',
+                y: 65
+            }]
+        }, {
+            name: 'Stand',
+            borderColor: Highcharts.getOptions().colors[2],
+            data: [{
+                color: Highcharts.getOptions().colors[1],
+                radius: '50%',
+                innerRadius: '50%',
+                y: 50
+            }]
+        }]
+    },
+
+    /**
+     * In the chart load callback, add icons on top of the circular shapes
+     */
+    function callback() {
+
+        // Move icon
+        this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8])
+            .attr({
+                'stroke': '#303030',
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'stroke-width': 2,
+                'zIndex': 10
+            })
+            .translate(190, 26)
+            .add(this.series[2].group);
+
+        // Exercise icon
+        this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8, 'M', 8, -8, 'L', 16, 0, 8, 8])
+            .attr({
+                'stroke': '#303030',
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'stroke-width': 2,
+                'zIndex': 10
+            })
+            .translate(190, 61)
+            .add(this.series[2].group);
+
+        // Stand icon
+        this.renderer.path(['M', 0, 8, 'L', 0, -8, 'M', -8, 0, 'L', 0, -8, 8, 0])
+            .attr({
+                'stroke': '#303030',
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'stroke-width': 2,
+                'zIndex': 10
+            })
+            .translate(190, 96)
+            .add(this.series[2].group);
+    });
+
+
+});
+</script>
+
+
 <!--
 [ <% @cordinator.each do |c| %> <% c.projects.each do |p|%> <%= p.reports.count('DISTINCT reports.project_id') %>,<%end%><%end%>]
 
 select("activities.*").distinct.joins("inner join works on works.id = activities.work_id inner join reports on reports.id = works.report_id inner join projects on projects.id = reports.project_id inner join cordinators on cordinators.id = projects.cordinator_id ").where("cordinators.id = :name", { name: coridnator})
 -->
  <% if current_user.typeuser.to_i == 1 || current_user.typeuser.to_i == 2 %>
- <div id="charcont" style=""></div>
-
- <%= form_tag projects_path, :method => "get" do %>
-<div class="input-group col-md-4" style="position: absolute; padding: 5px;float:right; top: 470px; left: 690px">
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre del Cordinador"%>
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Buscar!</button>
-      </span>
-    </div>
-    <% end %>
-
-  <% @cordinator.each do |c|%>
-  <ol class="breadcrumb" style="background-color:#2E2E2E;color:#fff;">
-  <li style="width:95%;margin:auto;"><%= c.name  %><div style ="float:right;width:2em;"><%= link_to new_project_path(:id_cordi => c.id), {:title=>"Nuevo Proyecto"},{} do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon glyphicon-folder-open"></i></div>	
-     <%end%></li>
-
-</ol>
-  <table class="table table-hover">
-<thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Objetivo</th>
-      <th>Tiempo</th>
-      <th>Estado</th>
-      <th>Fase</th>
-      <th>Responsable</th>
-    </tr>
-  </thead>  
- 	<% c.projects.each do |proje| %>
+ <div id="charcont" style="float:left;position:relative"></div>
+<div id="container" style="float:right;position:relative"></div>
+<div id="gouge" style="float:right;position:relative;margin:left;"></div>
 
 
-  <tbody>
-	 <td><%= proje.name %></td>
-	 <td><%= proje.objetive %></td>
-	 <td><%= proje.time %></td>
-	 <td><%= proje.status %></td>
-	 <td><%= proje.fase %></td>
-	 <td><%= proje.cordinators %></td>
-     <td style="width:3em;"><%=  link_to p, method: :delete, data: { confirm: 'Estas seguro?' }  do%><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-remove"></i>
-     <%end%></td>
-     
-<% end%>
-</tbody>
-</table>
 
 
-<% end %>
+
+
+<div id="sliders">
+    <table>
+        <tr>
+          <td>Girar abajo</td>
+          <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
+        </tr>
+        <tr>
+          <td>Girar Lados</td>
+          <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
+        </tr>
+        <tr>
+          <td>Profundidad</td>
+          <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
+        </tr>
+    </table>
+</div>
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+
+  
  <%  else %>
  
-<% @cordinator.each do |c|%>
-  <ol class="breadcrumb" style="background-color:#2E2E2E;text-color:#000;">
-  <li style="width:95%;margin:auto;"><%= c.name  %><div style ="float:right;width:2em;"><%= link_to :controller => :projects,:action => :new do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon glyphicon-folder-open"></i></div>  
-     <%end%></li>
-</ol>
-  <table class="table table-hover">
-<thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Objetivo</th>
-      <th>Tiempo</th>
-      <th>Estado</th>
-      <th>Fase</th>
-      <th>Responsable</th>
-    </tr>
-  </thead>  
-  <% c.projects.each do |proje| %>
-
-
-  <tbody>
-   <td><%= proje.name %></td>
-   <td><%= proje.objetive %></td>
-   <td><%= proje.time %></td>
-   <td><%= proje.status %></td>
-   <td><%= proje.fase %></td>
-   <td><%= proje.cordinators %></td>
-   <td style="width:3em;"><%= link_to :controller => :activities,:action => :new,:id_tarea => c.id do %><i class="btn btn-default btn-sm glyphicon glyphicon glyphicon-pushpin"></i>
-       <%end%></td>
-     
-<% end%>
-</tbody>
-</table>
-<% end%>
 
 
 

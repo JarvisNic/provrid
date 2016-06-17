@@ -36,7 +36,7 @@
         <% case current_user.typeuser.to_i  %>
         <% when 1 %>
         <li><%= link_to "Proyectos",projects_path %></li>
-   
+        <li><%= link_to "Reportes",reports_path %></li>
         <% when 2 %>
         <li><%= link_to "Proyectos",projects_path %></li>
         <li><%= link_to "Reportes",reports_path %></li>
@@ -44,6 +44,7 @@
         <li><%= link_to "Actividades",activities_path %></li>
      
         <% when 3%>
+        <li><%= link_to "Reportes",reports_path %></li>
         <li><%= link_to "Tareas",works_path %></li>
         <li><%= link_to "Actividades",activities_path %></li>
         
@@ -53,14 +54,45 @@
       <ul class="nav navbar-nav navbar-right">
          <% if current_user %>
         <li><p class="navbar-text">Bienvenido <%= current_user.email %>.</p></li>
-
+          <li> <a id="button1" class="glyphicon glyphicon-envelope"></a>  </li>
         <li><%= link_to "Cerrar Sesión", logout_path %></li>
         <% end %>
-
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </div>
+<div id="messages" style="display:none">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Nuevo mensaje
+</button>
+          <%if current_user.present? %>
+          <%if current_user.messages.present? %>
+          <% current_user.messages.each do |mesa| %>
+          <div style="width:100%;border-bottom: 1px solid #ddd;">
+          <strong>  <% User.select(:name).where("id = :id", { id: mesa.id_reciever }).each do |user| %>
+          <%= user.name %></strong>
+           <%=  link_to "",messages_path(mesa), :method=>"delete", data: { confirm: 'Estas seguro?' }  , class: "btn  glyphicon glyphicon glyphicon-remove",:style=>"float:right",:title=>"Eliminar Mensaje" %>
+          <%end%>
+          
+          <div style="width:100%;"><%= mesa.body %>
+          </div> 
+           </div> 
+
+          <%end %>
+
+          <%else %>
+          No hay mensajes<br>
+          <%end %>
+          <%end %>
+          
+        </div>
+        <script type="text/javascript">
+                  $("#button1").click(function() { 
+              $("#messages").toggle();
+          });
+        </script>
+
+
 <script type="text/javascript">
   $('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');
 </script>
@@ -73,8 +105,30 @@
     <p style ="margin: 0.5em;z-index:1;position:absolute;" class="alert alert-danger alert-dismissible",><%= alert %><button style="z-index:3;" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="z-index:4">&times;</span></button></p>
   <% end %>
   <br>
-
-
+ <%if current_user.present? %>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= form_for(@message = Message.new) do |f| %>
+        <h4 class="modal-title" id="myModalLabel">Para :  <%= f.collection_select :user_id, User.all, :id, :name, {prompt: "Seleccionar destinatario"}, {:class=>'form-control',:style=>"width:20%;display: inline;"} %></h4>
+      </div>
+      <div class="modal-body">
+        <%= f.text_area :body ,:class=> "form-control desc",:style=>"float:left;width:100%;"%>
+        <%= f.text_field :id_reciever ,:value => current_user.id,:style=>"display:none;"%>
+        <br><br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <%= f.submit "Enviar",class: "btn btn-primary btn-lg boton",style: "margin:0 5em;",:onclick => ""%>
+         <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+<%end %>
 
 <div class="col-md-12">
 <%= yield %>

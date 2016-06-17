@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  id_sender: 1
+  id_reciever: 1
+
+two:
+  body: MyText
+  id_sender: 1
+  id_reciever: 1

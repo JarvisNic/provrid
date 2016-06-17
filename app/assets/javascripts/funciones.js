@@ -36,15 +36,15 @@ function validacionw() {
     $(".namew").focus().after("<span class='error'>Formato Incorrecto</span>");
     return false; 
   }                         
-  if ($('.desc').val().length < 30) 
+  if ($('.descu').val().length < 30) 
   {
     $(".error").delay(200).fadeOut(300);
-    $(".desc").focus().after("<span class='error'>El mínimo de caractéres es de 30</span>");
+    $(".descu").focus().after("<span class='error'>El mínimo de caractéres es de 30</span>");
      return false;
   }
-  if (!($('.desc').val().match(re))) {
+  if (!($('.descu').val().match(re))) {
     $(".error").delay(200).fadeOut(300);
-    $(".desc").focus().after("<span class='error'>Formato Incorrecto</span>");
+    $(".descu").focus().after("<span class='error'>Formato Incorrecto</span>");
      return false;
   }
   if  ($('.objw').val().length < 30 ) 
@@ -126,3 +126,18 @@ function validareport() {
   return true;
 }
 
+
+function validareset() {
+//valor = document.getElementById("userma").value;
+if( !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test('userema')) )
+ {
+  $(".error").delay(200).fadeOut(300);
+  $(".userema").focus().after("<span class='error' style='right:3px;'>Ingrese un correo válido</span>");
+  
+  return false;
+
+}
+$('.userema').style.display = 'none';
+
+return true;
+}

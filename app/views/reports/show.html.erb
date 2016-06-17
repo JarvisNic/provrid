@@ -23,7 +23,7 @@ Tiempo vencido
 
 <p>
   <strong class="col-md-3">Pertenece a </strong>
-  <%= @report.project.name %>
+  <%= link_to @report.project.name,@report.project %>
 </p>
 <p>
 <strong class="col-md-3">Tareas pendientes </strong></p>
@@ -32,6 +32,7 @@ Tiempo vencido
 <table class = "table table-hover" >
 <thead>
     <tr>
+    <h3>TUMA WILL</h3>
       <th class="col-md-2">Nombre</th>
       <th class="col-md-2">Objetivo</th>
       <th class="col-md-2">Descripción</th>
@@ -44,12 +45,16 @@ Tiempo vencido
 <tbody>
 <% @report.works.each do |n|%>
   <tr>
-        <td style="max-width:30px;overflow:hidden;"><%= n.name %></td>
+        <td style="max-width:30px;overflow:hidden;"><%= link_to n.name,n %></td>
         <td style="max-width:30px;overflow:hidden;"><%= n.objetive %></td>
         <td style="max-width:30px;overflow:hidden;"><%= n.descripcion %></td>
         <td style="max-width:30px;overflow:hidden;"><%= n.fecha_inicio %></td>
         <td style="max-width:30px;overflow:hidden;"><%= n.fecha_fin %></td>
+        <% if n.activities.present? %>
         <td style="max-width:30px;overflow:hidden;"><% n.activities.each do |q| %><%= link_to q.name, q %><br><%end %></td>
+        <% else %>
+        <td style="max-width:30px;overflow:hidden;">No existe actividad</td>
+        <% end %>
         <td style="max-width:30px;"><%= link_to "",new_activity_path(:id_tarea => n.id),{:title=> "Asignar actividad",:class=>"btn glyphicon glyphicon glyphicon-pushpin",:style=>"float:left"} %>
         <%= link_to "",work_path(n),{:title=> "Editar Tarea",:class=>"btn glyphicon glyphicon-pencil",:style=>"float:left"}%>
         <%= link_to "",n, method: :delete, data: { confirm: 'Estas seguro?'},:style=>"float:left",:title=>"Eliminar Tarea",:class=>"glyphicon glyphicon glyphicon-remove btn" %>

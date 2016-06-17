@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501225852) do
+ActiveRecord::Schema.define(version: 20160615052257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,15 +41,23 @@ ActiveRecord::Schema.define(version: 20160501225852) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "id_reciever"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.text     "objetive"
-    t.string   "status"
-    t.string   "fase"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "cordinator_id"
     t.integer  "time"
+    t.integer  "status"
+    t.integer  "fase"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -69,8 +77,11 @@ ActiveRecord::Schema.define(version: 20160501225852) do
     t.string   "address"
     t.string   "phone"
     t.string   "typeuser"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   create_table "works", force: :cascade do |t|

@@ -1,11 +1,11 @@
 <%= form_for (@project) do |f| %>
   <div class="field">
-  <%= f.label :Nombre_Proyecto ,:style=>"width:11%;float:left;margin:0.3em ;" %>
+  <%= f.label :Nombre_del_Proyecto ,:style=>"width:19%;float:left;margin:0.3em ;" %>
   <%= f.text_field :name, :class => 'form-control nampo' ,:style=>"float:left;width:30%" , :placeholder => "El nombre del  proyecto debe tener 10 caracteres",:autofocus=>true %>
     </div></br></br></br>
 
     <div class="field">
-   <%= f.label :Objetivo_proyecto ,:style=>"width:11%;float:left;margin:0.2em ;"%>
+   <%= f.label :Objetivo_del_proyecto ,:style=>"width:19%;float:left;margin:0.2em ;"%>
    <%= f.text_area :objetive, :class => 'form-control objepo' ,:style=>"float:left;width:62%" , :placeholder => "El objetivo del Proyecto debe terner  "%>
     </div></br>
 
@@ -13,19 +13,19 @@
   </br></br></br>
 
     <div class="field">
-  <%= f.label :Duración_en_meses ,:style=>"width:11%;float:left;margin:0.2em ;" %>
+  <%= f.label :Duración_en_meses ,:style=>"width:19%;float:left;margin:0.2em ;" %>
   <%=  f.number_field :time,class: "form-control timep"  ,:style=>"float:left;width:15%"%>
     </div>
 
     <div class="field">
-  <%= f.label :Estado ,:style=>"width:11%;float:left;margin:0.2em ; "%>
+  <%= f.label :Estado ,:style=>"width:11%;float:left;margin:0.2em 2em ; "%>
   <%= f.select :status ,[['En proceso',2], ['Finalizado',3]], {},{:class => "form-control",:style=>"float:left;width:30%" }%>
     </div></br></br></br>
   <div class="field">
 
 
-    <%= f.label :fase ,:style=>"width:11%;float:left;margin:0.3em ;" %>
-    <%= f.number_field :fase,class: "form-control fasepo",:style=>"float:left;width:10%" %>
+    <%= f.label :fase ,:style=>"width:19%;float:left;margin:0.3em ;" %>
+    <%= f.select :fase ,[['Rec. datos',1], ['Planificación',2], ['Ejecución',3], ['Implementación',4]], {},{:class => "form-control",:style=>"float:left;width:30%" }%>
   </div></br></br>
    <hr>
    <div class="field" style="display:none;">

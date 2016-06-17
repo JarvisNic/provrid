@@ -34,7 +34,7 @@
         <td><%= link_to f.project.name,f.project %></td>
         <td><%= f.desc %></td>
         <td><%= f.date.strftime("%x") %></td>
-        <td>
+        <td class="col-md-3">
         <%= link_to "",new_report_path(:id_project=>f.project.id,:name=>f.project.name),:class=>"glyphicon glyphicon-file btn",:title=>"Asignar reporte"%>
         <%= link_to "",new_work_path(:id_report => f.id,:name=>f.name),{:title=> "Asignar una tarea",:class=>"glyphicon glyphicon-plus btn",} %>
         <%= link_to "",edit_report_path(f,:id_project=>f.project_id),{:title=> "Editar Reporte",class: "btn glyphicon glyphicon-pencil"} %>

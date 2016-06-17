@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
+ 
+
+default_url_options :host => "localhost:3000"
+  resources :messages
   resources :activities
   resources :users
   resources :reports
   resources :works
-  resources :cordinators
-  resources :projects
+  resources :password_resets
+  resources :cordinators do 
+    get :reporte_cordinador, :on => :collection
+  end
+  resources :projects do
+    get :reporte_proyectos, :on=> :collection
+  end
   resources :facultads
   get 'charts/dataas'
  resources :sessions, only: [:new, :create, :destroy]

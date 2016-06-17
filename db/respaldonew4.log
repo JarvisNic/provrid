@@ -1,0 +1,56 @@
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+rake aborted!
+Don't know how to build task 'db:restore' (see --tasks)
+
+(See full trace by running task with --trace)
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: already initialized constant Mime::PDF
+/home/denis/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/actionpack-4.2.6/lib/action_dispatch/http/mime_type.rb:163: warning: previous definition of PDF was here
