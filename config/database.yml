@@ -19,10 +19,9 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-
-    username: denis  
-    password: dasdfasdf
-
+  pool: 5
+  username: denis  
+  password: dasdfasdf
 
 development:
   <<: *default
@@ -87,9 +86,6 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  pool: 5
-  timeout: 5000
   database: provrid_production
   username: denis
   password: dasdfasdf
