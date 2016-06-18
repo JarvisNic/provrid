@@ -2,11 +2,11 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
 
-  Auth::application.configure do
-   Other config items omitted.
+  #Auth::application.configure do
+   #Other config items omitted.
   
-  config.action_mailer.default_url_options = { :host => "provriduni.herokuapp.com" }
-end
+  #config.action_mailer.default_url_options = { :host => "provriduni.herokuapp.com" }
+#end
 
   # Code is not reloaded between requests.
   config.cache_classes = true
