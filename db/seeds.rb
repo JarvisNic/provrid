@@ -56,3 +56,13 @@
 #Work.create(name:"tarea8",objetive:"adfadf",descripcion:"adfadf",fecha_inicio:"",fecha_fin:"",report_id:8)
 #Work.create(name:"tarea9",objetive:"adfadf",descripcion:"adfadf",fecha_inicio:"",fecha_fin:"",report_id:9)
 
+
+User.create(name:"Guillermo", lastname:"Salazar", email:"guillermosalazar@gmail.com", password:"Weareyoung123", address:"De la raka chaka 3c al lago", phone:"89876754", typeuser:"1")
+User.create(name:"Alejandra", lastname:"Guzman", email:"alejandrag96@gmail.com", password:"christAlone24", address:"De la raka chaka 3c al lago", phone:"86807654", typeuser:"1")
+User.create(name:"Mijailinvitate", lastname:"López", email:"e.mijail@gmail.com", password:"engels6mas9", address:"De la raka chaka 3c al lago", phone:"78906543", typeuser:"1")
+User.create(name:"invitado", lastname:"temporal", email:"invitado@gmail.com", password:"sesioninvitate321", address:"De la raka chaka 3c al lago", phone:"89876754", typeuser:"2")
+User.create(name:"invitado1", lastname:"temporal1", email:"invitado1@gmail.com", password:"sesioninvitate123", address:"De la raka chaka 3c al lago", phone:"89678905", typeuser:"2")
+User.create(name:"invitado2", lastname:"temporal2", email:"invitado2@gmail.com", password:"sesioninvitate321", address:"De la raka chaka 3c al lago", phone:"89876754", typeuser:"2")
+User.create(name:"innovador0", lastname:"innovador0", email:"aaronmerk2loke9624@gmail.com", password:"usuariotipo3", address:"De la raka chaka 3c al lago", phone:"89876754", typeuser:"3")
+User.create(name:"innovador1", lastname:"innovador1", email:"innovador1@gmail.com", password:"usuariotipo3", address:"De la raka chaka 3c al lago", phone:"89876754", typeuser:"3")
+User.create(name:"innovador2", lastname:"innovador2", email:"innovador2@gmail.com", password:"usuariotipo3", address:"De la raka chaka 3c al lago", phone:"89876754", typeuser:"3")

@@ -12,7 +12,7 @@ default_url_options :host => "localhost:3000"
     get :reporte_cordinador, :on => :collection
   end
   resources :projects do
-    get :reporte_proyectos, :on=> :collection
+    get :report, :on=> :collection
   end
   resources :facultads
   get 'charts/dataas'

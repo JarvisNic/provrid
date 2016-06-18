@@ -1,4 +1,4 @@
-
+ 
 <div class="jumbotron">
 <br>
 <div class="col-md-12">
@@ -68,7 +68,8 @@
 </table>
 <a href="javascript:history.back()" class="btn btn-primary btn-lg" >Atrás</a>
 <%= link_to 'Editar', edit_project_path(@project,:id_cordi=>@project.cordinator_id),class: "btn btn-primary btn-lg" %> 
-
-<p><%=link_to "(PDF)", projects_path(@project, :format => 'pdf') , class: "btn btn-primary-lg" %></p>
+<br>
+<br>
+<p><%=link_to "(PDF)", :controller=>"projects",:action=>"report",:format=>"pdf",:id=>@project.id%></p>
 
 </div>

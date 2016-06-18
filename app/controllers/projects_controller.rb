@@ -8,53 +8,56 @@ class ProjectsController < ApplicationController
   #get reporte/proyecto
   def report
 
-
- #@projecta = Project.find(params[:id])
  @projecta = Project.find(params[:id])
- #Prawn::Document.gnerate("Firsdocu.pdf") do
-  #text "Hola mundo mi primer pdf"
-#end
-render "project/show.prawn.pdf"
-        respond_to do |format|
 
-            format.html # show.html.erb
-            format.json { render json: @project }
-            format.pdf  { render :layout => false }
-           format.pdf do
-
-              
    pdf = Prawn::Document.new
-       pdf.text "Universidad Nacional de Ingenieria" , :size => 30, :style => :bold
-       # pdf.move_down(40) 
-        #pdf.image "#{Prawn:::DATADIR}/app/assets/images/uni.png", :at => [200, 10]
-        pdf.text "Nombre del Proyecto #{@project.name}", :size => 20
-      #  pdf.create_stamp("Proyecto Aprobado") do
-      #        pdf.rotate(30, :origin => [-5, -5]) do
-         #     pdf.stroke_color "FF3333"
-      #        pdf.stroke_ellipse [0, 0], 29, 15
-      #        pdf.stroke_color "000000"
-     #         pdf.fill_color "993333"
-      #        pdf.font("Times-Roman") do
-      #        pdf.draw_text "Proyecto Aprobado", :at => [-23, -3]
-     #         end
-         #     pdf.fill_color "000000"
-     #         end
-      #        end
-      #        pdf.stamp "Proyecto Aprobado"
-      #        pdf.stamp_at "Proyecto Aprobado", [200, 200]
-      send_data pdf.render, :filename => ".pdf", :disposition => "inline"
-      # prawnto :filename => @project.name + ".pdf", :inline => false, :template => "show.pdf.prawn"
-end
 
-#prawnto :prawn => { :template => "#{Rails.root}/app/assets/pdfs/template1.pdf" }
-end
-  #  output = ProjectsReport.new(:page_size=>"letter").to_pdf
-  #  respond_to do |format|
-  #    format.html do
-  #      send_data output, :filename => 'productos.pdf',
-  #                      :type=>"aplication/pdf"
-  #      end
- #   end
+        pdf.text "Universidad Nacional de Ingenieria" , :size => 30, :style => :bold
+        pdf.move_down(40) 
+        #pdf.image "#{Prawn:::DATADIR}/app/assets/images/uni.png", :at => [200, 10]
+        pdf.text "Nombre del Proyecto: #{@projecta.name}", :size => 20
+        pdf.move_down(20) 
+        pdf.text "#{@projecta.name}", :size => 20
+        pdf.move_down(10)
+        pdf.text "Objetivo del Proyecto: " , :size => 13
+        pdf.move_down(10) 
+        pdf.text "#{@projecta.objetive}", :size => 13
+        pdf.move_down(10) 
+        pdf.text "Estado del Proyecto: #{@projecta.status}", :size => 13
+        pdf.move_down(20) 
+        pdf.text "Fase del Proyecto: #{@projecta.fase}", :size => 13
+        pdf.move_down(10)
+        pdf.text " Los Reportes que pertenecen a #{@projecta.name} son :", :size => 13
+        pdf.move_down(20)
+        @projecta.reports.each do |pr|
+        pdf.text "Nombre del Reporte: #{pr.name}"
+        pdf.move_down(10)
+        pdf.text "Descripcion del Reporte: #{pr.desc}"
+        pdf.move_down(10)
+        pdf.text "Fecha y Hora local de creacion del reporte: #{pr.created_at}"
+        pdf.move_down(10)
+        pdf.text "Fecha y Hora local de acutalizacion del repote: #{pr.date}"
+        pdf.move_down(10)
+        pdf.line [0,100], [500,100]
+         end
+        
+
+        pdf.create_stamp("Proyecto Aprobado") do
+        pdf.rotate(30, :origin => [-5, -5]) do
+        pdf.stroke_color "FF3333"
+        pdf.stroke_ellipse [0, 0], 49, 15
+        pdf.stroke_color "000000"
+        pdf.fill_color "993333"
+        pdf.font("Times-Roman") do
+        pdf.draw_text "Proyecto Aprobado", :at => [-23, -3]
+     end
+        pdf.fill_color "000000"
+     end
+     end
+        pdf.stamp "Proyecto Aprobado"
+        pdf.stamp_at "Proyecto Aprobado", [220, 200]
+        send_data pdf.render, :filename => "#{@projecta.name}", :disposition => "inline"
+     pdf.text_box "Informe Generado por el Programa de acompañamiento a Proyectos", :at => [220,200], :style => :bold
   end
   
   def index
@@ -78,19 +81,7 @@ end
 
     
     @projects = Project.select("all").where(:project_id => params[:id]);
-    #@projecta = Project.find(params[:id])
-   # @filename = 'myreport.pdf'
-
-    #respond_to do |format|
-     
-     #format.pdf do
-      #  pdf = new(@projects)
-       # send_data pdf.render, filename: 'report.pdf'
-     # format.pdf { render :layout => false }
-      #end
-
-    #end
-
+   
   end
 
   # GET /projects/new
@@ -150,51 +141,6 @@ end
       @project = Project.find(params[:id])
 
       
-     
-
-pdf = Prawn::Document.new
-      pdf.text "Universidad Nacional de Ingenieria" , :size => 30, :style => :bold
-  #      pdf.move_down(40) 
-        #pdf.image "#{Prawn:::DATADIR}/app/assets/images/uni.png", :at => [200, 10]
-        pdf.text "Nombre del Proyecto #{@projects.name}", :size => 20
-    #    pdf.create_stamp("Proyecto Aprobado") do
-     #         pdf.rotate(30, :origin => [-5, -5]) do
-      #        pdf.stroke_color "FF3333"
-       #       pdf.stroke_ellipse [0, 0], 29, 15
-        #      pdf.stroke_color "000000"
-         #     pdf.fill_color "993333"
-           #   pdf.font("Times-Roman") do
-            #  pdf.draw_text "Proyecto Aprobado", :at => [-23, -3]
-             # end
-              #pdf.fill_color "000000"
-              #end
-              #end
-              #pdf.stamp "Proyecto Aprobado"
-              #pdf.stamp_at "Proyecto Aprobado", [200, 200]
-        send_data pdf.render, :filename => ".pdf", :disposition => "inline", :template => "show.pdf.prawn"
-     # @projecta = Project.find(params[:id])
-       
-
-       # respond_to do |format|
-
-        #format.pdf { render :layout => true }
-        #format.html { redirect_to projects_url, :format => 'pdf' }
-        #pdf = new(@projects)
-        
-
-        #format.html { redirect_to projects_url, notice: 'El reporte se ha descargado sastifactoriamente' }
-        #format.json { head :no_content }
-
-      #end
-       # respond_to do |format|
-     
-         # format.pdf do
-          #pdf = new(@projects)
-         # pdf = Prawn::Document.new
-          #send_data pdf.render
-        #pdf { render :layout => false }
-                  #end
-                #  end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
