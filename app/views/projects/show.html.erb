@@ -70,6 +70,6 @@
 <%= link_to 'Editar', edit_project_path(@project,:id_cordi=>@project.cordinator_id),class: "btn btn-primary btn-lg" %> 
 <br>
 <br>
-<p><%=link_to "(PDF)", :controller=>"projects",:action=>"report",:format=>"pdf",:id=>@project.id%></p>
+<%=link_to image_tag('icon.png', :style => "width:5%;", :alt => 'Descargar Reporte PDF'), :controller=>"projects",:action=>"report",:format=>"pdf",:id=>@project.id%>
 
 </div>

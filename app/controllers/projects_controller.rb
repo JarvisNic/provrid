@@ -10,16 +10,21 @@ class ProjectsController < ApplicationController
 
  @projecta = Project.find(params[:id])
 
-   pdf = Prawn::Document.new
-
-        pdf.text "Universidad Nacional de Ingenieria" , :size => 30, :style => :bold
-        pdf.move_down(40) 
-        #pdf.image "#{Prawn:::DATADIR}/app/assets/images/uni.png", :at => [200, 10]
-        pdf.text "Nombre del Proyecto: #{@projecta.name}", :size => 20
-        pdf.move_down(20) 
+        pdf = Prawn::Document.new
+        pdf.text "Universidad Nacional de Ingenieria" , :size => 30, :style => :bold, :position => :center
+        pdf.move_down(10) 
+        pdf.text "Vicerectoria de Investigación y Desarrollo." , :size => 25, :style => :bold,  :position => :center
+        pdf.move_down(10)
+        pdf.text "Programa de acompañamiento a Proyectos" , :size => 20, :style => :bold,  :position => :center
+        pdf.text "Reporte Generado por el programa de Tecnología de la Informacion PROAP" , :size => 15, :position => :center
+        pdf.move_down(45) 
+        pdf.image "#{Rails.root.join}/app/assets/images/uni.jpg",  :position => :center ,:at => [0, 600], :height => 100
+        pdf.move_down(80)
+        pdf.text "Nombre del Proyecto:", :size => 20, :style => :bold
+        pdf.move_down(10) 
         pdf.text "#{@projecta.name}", :size => 20
         pdf.move_down(10)
-        pdf.text "Objetivo del Proyecto: " , :size => 13
+        pdf.text "Objetivo del Proyecto: " , :size => 13, :style => :bold
         pdf.move_down(10) 
         pdf.text "#{@projecta.objetive}", :size => 13
         pdf.move_down(10) 
@@ -27,10 +32,10 @@ class ProjectsController < ApplicationController
         pdf.move_down(20) 
         pdf.text "Fase del Proyecto: #{@projecta.fase}", :size => 13
         pdf.move_down(10)
-        pdf.text " Los Reportes que pertenecen a #{@projecta.name} son :", :size => 13
+        pdf.text " Los Reportes que pertenecen a #{@projecta.name} son :", :size => 13, :style => :bold
         pdf.move_down(20)
         @projecta.reports.each do |pr|
-        pdf.text "Nombre del Reporte: #{pr.name}"
+        pdf.text "Nombre del Reporte: #{pr.name}", :style => :bold
         pdf.move_down(10)
         pdf.text "Descripcion del Reporte: #{pr.desc}"
         pdf.move_down(10)
@@ -55,7 +60,7 @@ class ProjectsController < ApplicationController
      end
      end
         pdf.stamp "Proyecto Aprobado"
-        pdf.stamp_at "Proyecto Aprobado", [220, 200]
+        pdf.stamp_at "Proyecto Aprobado", [250, 200]
         send_data pdf.render, :filename => "#{@projecta.name}", :disposition => "inline"
      pdf.text_box "Informe Generado por el Programa de acompañamiento a Proyectos", :at => [220,200], :style => :bold
   end

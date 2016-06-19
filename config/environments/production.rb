@@ -5,7 +5,7 @@ Rails.application.configure do
   #Auth::application.configure do
    #Other config items omitted.
   
-  #config.action_mailer.default_url_options = { :host => "provriduni.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "provriduni.herokuapp.com" }
 #end
 
   # Code is not reloaded between requests.
