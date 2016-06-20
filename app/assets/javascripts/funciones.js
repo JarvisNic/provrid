@@ -141,3 +141,79 @@ $('.userema').style.display = 'none';
 
 return true;
 }
+
+function valida_usuario() {
+  if ($('.neim').val().length < 4 )  {
+    // Si no se cumple la condicion...
+    $(".error1").delay(200).fadeOut(300);
+    $(".neim").focus().after("<span class='error1'>Debe ser mayor a 4</span>");
+
+    //alert('[ERROR] Debe ingresar un nombre');
+    if(!($('.neim').val().match(re))){
+       $(".error1").delay(200).fadeOut(300);
+      $(".neim").focus().after("<span class='error1'>Caracter incorrecto</span>");
+   
+    }
+  return false;
+}if ($('.email').val().length < 4 )  {
+    // Si no se cumple la condicion...
+    $(".error1").delay(200).fadeOut(300);
+    $(".email").focus().after("<span class='error1'>Debe ser mayor a 4</span>");
+
+    //alert('[ERROR] Debe ingresar un nombre');
+    if(!($('.email').val().match(re))){
+       $(".error1").delay(200).fadeOut(300);
+      $(".email").focus().after("<span class='error1'>Caracter incorrecto</span>");
+   
+    }
+  return false;
+}if ($('.contra').val().length < 4 )  {
+    // Si no se cumple la condicion...
+    $(".error1").delay(200).fadeOut(300);
+    $(".contra").focus().after("<span class='error1'>Debe ser mayor a 4</span>");
+
+    //alert('[ERROR] Debe ingresar un nombre');
+   
+  return false;
+} if($('.contra1').val() != $('.contra').val()){
+       $(".error1").delay(200).fadeOut(300);
+      $(".contra").focus().after("<span class='error1'>Contraseñas no coinciden</span>");
+   return false;
+    }
+if ($('contra1').val()<4 )  {
+    // Si no se cumple la condicion...
+    $(".error1").delay(200).fadeOut(300);
+    //alert('[ERROR] Debe ingresar un nombre');
+    if($('.contra1').value != $('.contra').value){
+       $(".error1").delay(200).fadeOut(300);
+      $(".contra").focus().after("<span class='error1'>Caracter incorrecto</span>");
+   
+    }
+  return false;
+}
+  $('.error').style.display = 'none';
+  // Si el script ha llegado a este punto, todas las condiciones
+  // se han cumplido, por lo que se devuelve el valor true
+  return true;
+}
+
+
+
+function valida_cordina() {
+  if ($('.dire').val().length < 10 ) {
+    // Si no se cumple la condicion...
+    $(".error1").delay(200).fadeOut(300);
+    $(".dire").focus().after("<span class='error1'>Debe ser mayor a 10 </span>");
+    //alert('[ERROR] Debe ingresar un nombre');
+  return false;
+}
+  else if ($('.tele').val().length < 6) {
+    $(".error1").delay(200).fadeOut(300);
+   $(".tele").focus().after("<span class='error1'>Debe ser mayor a 6</span>");
+   return false;
+  }
+  $('.error1').style.display = 'none';
+  // Si el script ha llegado a este punto, todas las condiciones
+  // se han cumplido, por lo que se devuelve el valor true
+  return true;
+}

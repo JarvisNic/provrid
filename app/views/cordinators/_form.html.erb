@@ -12,32 +12,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="field" style="display:none">
+    <%= f.label :nombre ,:style=>"width:19%;float:left;margin:0.3em ;"%>
+    <%= f.text_field :name,:class => 'form-control nombre' ,:style=>";float:left;width:60%", :value=> params[:name]  %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
+    <%= f.label :Dirección,:style=>"width:19%;float:left;margin:0.3em ;" %>
+    <%= f.text_field :address,:class => 'form-control dire' ,:style=>";float:left;width:60%"  %>
+  </div><br><br>
   <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
+    <%= f.label :Teléfono ,:style=>"width:19%;float:left;margin:0.3em ;"%>
+    <%= f.text_field :phone, :class => 'form-control tele' ,:style=>";float:left;width:60%" %>
+  </div><br><br>
   <div class="field">
-    <%= f.label :facultad %><br>
-    <%= f.collection_select :facultad_id, Facultad.all, :id, :name, :prompt => "Facultad" %>
+    <%= f.label :Facultad,:style=>"width:19%;float:left;margin:0.3em ;" %>
+    <%= f.collection_select :facultad_id, Facultad.all, :id, :name, {:prompt => "Facultad"},{:class=>"form-control",:style=>";float:left;width:60%"} %>
   </div>
-  <div class="field">
-    <%= f.label :Proyecto %><br>
-    <%= f.collection_select :project_id, Project.all, :id, :name, :prompt => "Facultad" %>
-  </div>
-  <div class="field">
+  <div class="field" style="display:none">
     <%= f.text_field :user_id, :value => current_user.id %>
-  </div>
+  </div><br><br><br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Guardar", class: "btn btn-primary btn-lg",style: "margin:0 5em;", :onclick => "return valida_cordina()" %>
   </div>
 <% end %>
 <% end %>
+
 

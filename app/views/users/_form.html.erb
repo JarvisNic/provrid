@@ -1,10 +1,8 @@
-
-
 <% if current_user %>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>;
 
       <ul>
       <% @user.errors.full_messages.each do |message| %>
@@ -13,57 +11,43 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :Nombre,:style=>"width:19%;float:left;margin:0.3em ;" %> <%= f.text_field :name,:class => 'form-control neim' ,:style=>";float:left;width:60%" %><br><br>
+  </div>
+  
+  <div class="field">
+    <%= f.label :Correo,:style=>"width:19%;float:left;margin:0.3em ;" %>
+    <%= f.text_field :email,:class => 'form-control email' ,:style=>";float:left;width:60%" %><br><br>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br>
-    <%= f.text_field :lastname %>
+    <%= f.label :Contraseña,:style=>"width:19%;float:left;margin:0.3em ;" %>
+    <%= f.password_field :password,:class => 'form-control contra' ,:style=>";float:left;width:60%" %><br><br>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password,  class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.label :Confirme_contraseña,:style=>"width:19%;float:left;margin:0.3em ;" %>
+    <%= f.password_field :password_confirmation ,:class => 'form-control contra1' ,:style=>";float:left;width:60%"%><br><br>
   </div>
 
-  <% case current_user.typeuser.to_i  %>
-  <% when 1 %>
+  <% #case current_user.typeuser.to_i  %>
+  <% #when 1 %>
 
   <div class="field">
-    <%= f.label :typeuser %><br>
-    <%= f.select :typeuser, [['Supremo', 1], ['Jefe de Coordinador', 2], ['Coordinador', 3]], :prompt => "Tipo usuario"%>
-  </div>
-  <% when 2 %>
+    <%= f.label :Tipo_de_usuario,:style=>"width:19%;float:left;margin:0.3em ;" %>
+    <%= f.select :typeuser, [['Supremo', 1], ['Jefe de Coordinador', 2], ['Coordinador', 3]],{},{:class=>"form-control",:style=>"float:left;width:60%;"} %><br><br>
+  <!--/div>
+  <% #when 2 %>
   <div class="field">
     <%= f.label :typeuser %><br>
     <%= f.select :typeuser, [['Coordinador', 3]], :prompt => "Tipo usuario"%>
   </div>  
-  <% when 3 %>
+  <% #when 3 %>
   <div class="field">
     <%= f.label :typeuser %><br>
     <%= f.select :typeuser, [['Coordinador', 3]], :prompt => "Tipo usuario"%>
-  </div>
-  <% end %> 
+  </div>-->
+  <% #end %> 
   <div class="actions">
-    <%= f.submit %>
+        <%= f.submit "Guardar", class: "btn btn-primary btn-lg",style: "margin:0 5em;", :onclick => "return valida_usuario()" %>
   </div>
-
 <% end %>  
 <% end %>  
