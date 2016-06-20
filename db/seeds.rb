@@ -8,20 +8,20 @@
 
 
 #creamos los coordinadores para cada usuario en el sistema existen 8 usuarios por orden de jerarquía van de 1 a 8
-Cordinator.create(name:"CoordinadorFARQ",address:"CoordinadorFARQ",phone:12345678 ,facultad_id:1,user_id:1)
-Cordinator.create(name:"CoordinadorFIQ",address:"CoordinadorFIQ",phone:12345678 ,facultad_id:2,user_id:2)
-Cordinator.create(name:"CoordinadorFYCS",address:"CoordinadorFYCS",phone:12345678 ,facultad_id:3,user_id:3)
-Cordinator.create(name:"CoordinadorFEC",address:"CoordinadorFEC",phone:12345678 ,facultad_id:4,user_id:4)
-Cordinator.create(name:"CoordinadorFTIC",address:"CoordinadorFTIC",phone:12345678 ,facultad_id:5,user_id:5)
-Cordinator.create(name:"CoordinadorFTI",address:"CoordinadorFTI",phone:12345678 ,facultad_id:6,user_id:6)
+#Cordinator.create(name:"CoordinadorFARQ",address:"CoordinadorFARQ",phone:12345678 ,facultad_id:1,user_id:1)
+#Cordinator.create(name:"CoordinadorFIQ",address:"CoordinadorFIQ",phone:12345678 ,facultad_id:2,user_id:2)
+#Cordinator.create(name:"CoordinadorFYCS",address:"CoordinadorFYCS",phone:12345678 ,facultad_id:3,user_id:3)
+#Cordinator.create(name:"CoordinadorFEC",address:"CoordinadorFEC",phone:12345678 ,facultad_id:4,user_id:4)
+#Cordinator.create(name:"CoordinadorFTIC",address:"CoordinadorFTIC",phone:12345678 ,facultad_id:5,user_id:5)
+#Cordinator.create(name:"CoordinadorFTI",address:"CoordinadorFTI",phone:12345678 ,facultad_id:6,user_id:6)
 
 #llenamos las facultades
-Facultads.create(name:"FEC")
-Facultads.create(name:"FARQ")
-Facultads.create(name:"FIQ")
-Facultads.create(name:"FCYS")
-Facultads.create(name:"FTC")
-Facultads.create(name:"FTI")
+#Facultads.create(name:"FEC")
+#Facultads.create(name:"FARQ")
+#Facultads.create(name:"FIQ")
+#Facultads.create(name:"FCYS")
+#Facultads.create(name:"FTC")
+#Facultads.create(name:"FTI")
 
 #creamos los proyectos relacionados a cada coordinador
 Project.create(name:"Proyecto de Propiedad Intelectual",objetive:"Enumerar la listas de actividades relacionadas con el proyecto de propiedad Intelectual ",time:"12",status:"1",fase:"1", cordinator_id:1)
@@ -30,9 +30,9 @@ Project.create(name:"Tarjeta de dinero para Ciegos",objetive:"Crear el proceso d
 Project.create(name:"Pagina web MTI",objetive:"Preparar el documento de muestra para la propuesta para el MTI",time:"2",status:"1",fase:"3", cordinator_id:4)
 Project.create(name:"Sistema Geologico de Calidad el aire para Managua",objetive:"Definir los instrumentos a usar para capturar la calidad de aire de Managua",time:"12",status:"2",fase:"2", cordinator_id:5)
 Project.create(name:"Desarrollo de App para Agricultores",objetive:"Diseñar una aplicacion para Ios y Android capaz de automatizar las frutas importadas de Nicaragua",time:"2",status:"1",fase:"2", cordinator_id:6)
-Project.create(name:"Escaneo de Convenios de la UNI",objetive:"Definir el personal especifico para el escaneo de los convenios de la Universidad",time:"1",status:"2",fase:"1", cordinator_id:7)
-Project.create(name:"App para propiedad Intelectual",objetive:"Desarrollar una App para el RPI De Nicaragua",time:"4",status:"3",fase:"2", cordinator_id:8)
-Project.create(name:"Diseño del Sistema para El Proap",objetive:"Implementar con el equipo TIC las necesidades de diseñar una pagina web para el departamento",time:"9",status:"3",fase:"1", cordinator_id:9)
+Project.create(name:"Escaneo de Convenios de la UNI",objetive:"Definir el personal especifico para el escaneo de los convenios de la Universidad",time:"1",status:"2",fase:"1", cordinator_id:1)
+Project.create(name:"App para propiedad Intelectual",objetive:"Desarrollar una App para el RPI De Nicaragua",time:"4",status:"3",fase:"2", cordinator_id:2)
+Project.create(name:"Diseño del Sistema para El Proap",objetive:"Implementar con el equipo TIC las necesidades de diseñar una pagina web para el departamento",time:"9",status:"3",fase:"1", cordinator_id:3)
 
 #creamos los reportes asociados a un proyecto_id
 #Report.create(name:"reporte1",date:"",desc:"adfadf",project_id:1)
